@@ -3,7 +3,7 @@
 class BinarySearch
 {
 
-    static public function search($value, $array)
+    public static function search($value, $array)
     {
         $top = sizeof($array) - 1;
         $bottom = 0;
