@@ -12,8 +12,8 @@ Consists of data-structures and algorithms language wise.
 - Don't be afraid to make a PR!
 
 ### How to make PR
-1. Fork Repo on Web Page
-2. Make your changes on your forked repo
-3. Make Pull Request to master
+1. Fork Repo on Web Page.
+2. Make your changes on your forked repo.
+3. Make Pull Request to master.
 
 Hack on!
