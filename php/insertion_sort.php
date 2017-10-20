@@ -1,4 +1,4 @@
-/**Function for sorting an array with insertion sort algorithm.
+/**Function for sorting an array with insertion sort algorithm
   */
 
 <?php
@@ -40,3 +40,6 @@ print_r(insertion_Sort($chk_array));
      *                [6] => 5                                                        
      *            ) 
      */
+
+
+     
