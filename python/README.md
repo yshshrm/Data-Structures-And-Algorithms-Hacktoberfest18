@@ -1,18 +1,18 @@
-### List of Algorithms:  
+### List of Algorithms:
 
-Searching Algorithms:
-  Breadth First Search
-  Depth First Search
+Searching Algorithms:   
+Breadth First Search  
+Depth First Search  
 
-Sorting Algorithms:
-  Bubble Sort
-  Merge Sort
-  Sleep Sort
+Sorting Algorithms:   
+Bubble Sort 
+Merge Sort  
+Sleep Sort  
 
-Greedy Algorithms:
-  Kruskal's Algorithm
+Greedy Algorithms:  
+Kruskal's Algorithm 
 
-Data Structures:
-  Stack
-  Binomial Coefficient
-  Binary Search Tree
+Data Structures:  
+Stack 
+Binomial Coefficient  
+Binary Search Tree  
