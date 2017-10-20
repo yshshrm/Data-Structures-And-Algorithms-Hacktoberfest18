@@ -1,5 +1,5 @@
 // Complexity: O(log(n))
-// Computes the modular inverse of n module P
+// Computes the modular inverse of n modulo P
 
 #include <bits/stdc++.h>
 
