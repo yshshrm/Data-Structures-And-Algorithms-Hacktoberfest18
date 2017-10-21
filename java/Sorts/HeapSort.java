@@ -1,12 +1,12 @@
 
-/*
- * HeapSort is a comparison based sorting algorithms that uses a binary heap data structure. Its run time 
- * complexity is O(nlogn).
- * */
-
+/**
+ * Created by antrix190 on 22/10/2017
+ */
 public class HeapSort {
-
-
+	/*
+	 * HeapSort is a comparison based sorting algorithms that uses a binary heap data structure. Its run time 
+	 * complexity is O(nlogn).
+	 * */
 	public void sort(int arr[]){
 
 		int n = arr.length;
