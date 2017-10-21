@@ -5,9 +5,10 @@ Breadth First Search
 Depth First Search  
 
 Sorting Algorithms:   
-Bubble Sort 
-Merge Sort  
-Sleep Sort  
+Bubble Sort
+Merge Sort
+Sleep Sort
+Quick Sort
 
 Greedy Algorithms:  
 Kruskal's Algorithm 
