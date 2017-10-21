@@ -1,24 +1,37 @@
 public class Stack{
+	
     int arr[];
+    
     int size;
-    int top;
+    
     public Stack(int size) {
-        this.size = size;
-        arr = new int[this.size];
-        top = -1;
+        arr = new int[size];
+        this.size = 0;
     }
-    public void push(int element) {
-        if(top < size)
-            arr[++top] = element;
-        else
-            System.out.println("Stack overflow");
+    
+    public boolean isEmpty(){ return size == 0; }
+    
+    public int top() throws StackEmptyException{
+    	if(isEmpty())
+    		throw new StackEmptyException();
+    	return arr[size - 1];
     }
-    public int pop() {
-        if(top > -1)
-            return arr[top--];
-        else{
-            System.out.println("Stack underflow");
-            return 0;
-        }
+    
+    public int size(){ return size; }
+    
+    public void push(int element) throws StackFullException {
+    	if(size == arr.length)
+    		throw new StackFullException();
+        arr[size++] = element;
+    }
+    
+    public int pop() throws StackEmptyException {
+    	if(isEmpty())
+    		throw new StackEmptyException();
+        return arr[--size];
     }
 }
+
+class StackFullException extends Exception{}
+
+class StackEmptyException extends Exception{}
