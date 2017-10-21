@@ -1,3 +1,9 @@
+/**
+*
+* @author Mohamed Mashaal (https://github.com/mohamedmashaal)
+*
+*/
+
 public class SegmentTree {
 	private int [] st;
 	private Integer [] A ;
