@@ -5,6 +5,10 @@
 * Breadth First Search  
 * Depth First Search
 * Uniform-Cost Search
+* Local Search
+* Taboo Search
+* Beam Search
+* Simulated Annealing
 
 #### Sorting Algorithms
 
