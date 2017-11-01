@@ -1,6 +1,6 @@
 # Algorithms and Data Structures
 For Hacktoberfest 2017! <br/>
-Check your own profile stats after resigtering here: https://hacktoberfest.digitalocean.com/stats/<username>
+Check your own profile stats after registering here: https://hacktoberfest.digitalocean.com/stats/<username>
 
 ### About
 Consists of data-structures and algorithms language wise.
