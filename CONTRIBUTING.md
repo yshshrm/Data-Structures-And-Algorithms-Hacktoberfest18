@@ -1,45 +1,13 @@
-### Contributing to Data-Structures-And-Algorithms-Hacktoberfest18
+###### Pre-requisites:
+Install Git: 
+*Are you a first time user and just beginning with Open-Source projects? No problem! Here's [how you can install Git on your computer](https://www.digitalocean.com/community/tutorials/how-to-contribute-to-open-source-getting-started-with-git)*
 
-this is a guidelines for contributing to Data-Structures-And-Algorithms-Hacktoberfest18 with git commands :
+###### After you are done installing Git on your computer:
 
-1. Fork repository on GitHub
-2. Clone project into your computer by 
-
-   ```
-   git clone https://github.com/{your-username}/Data-Structures-And-Algorithms-Hacktoberfest18.git
-   ```
-3. Change into the new project’s directory
-  
-   ```
-   cd Data-Structures-And-Algorithms-Hacktoberfest18.git
-   ```
-4. in this stage, you need to set up a new remote that points to the original project so   
-   that you can grab any changes and bring them into your local copy. Firstly clock on the link to the original repository – it’s labeled “Forked from” at the top of the GitHub page. This takes you back to the projects main GitHub page, so you can find the “SSH clone URL” and use it to create the new remote, which we’ll call upstream. we ensure we’re on the master branch. Then the git pull command will sync our local copy with the upstream project and the git push syncs it to our forked GitHub project
-
-   ```
-   - git remote add upstream  
-     https://github.com/kvaluruk/Data-Structures-And-Algorithms-Hacktoberfest18.git
-   
-   - git checkout master && git push origin master
-   - git pull upstream master
-
-   ```
-5. Create new branch. You can name your branch whatever you like, but it helps for it to be   
-   meaningful. 
-
-   ```
-   git checkout -b {your-branch-name}
-   ```
-6. Add some files in project and commit
-
-   ```
-   git add *
-   git commit -m "your comment"
-
-7. Push a new branch
-
-   ```
-   git push -u origin {your-branch-name}  
-   
-8. Make Pull Request
-  
+1. Fork this repository on Github.
+2. Clone it onto your computer by opening terminal and running the command $ git clone https://github.com/{your username}/Data-Structures-And-Algorithms-Hacktoberfest18.git
+3. Use the actual name of the repository to change into that directory (eg. *$ cd repository*) and create and switch to a new branch by the following command: $ git checkout -b new-branch
+4. After modifying existing files or adding new files to the project, add them locally to your repository using $ gid add -A command where A is the file
+5. Add a short message about what you contributed for with the git commit command. For eg. $ git commit -m "Fixed documentation typos"
+6. Now use the command $ git push --set-upstream origin new-branch to push the changes to the current branch of your forked repository
+7. Now you can create a Pull Request with the chosen branch as new-branch
