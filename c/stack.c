@@ -1,84 +1,52 @@
-#include<stdio.h>
-#define MAX_SIZE 10
-//Stack max size is 10. After that overflow will occour.
+#include "stack.h"
 
-void display();
-void push(int);
-void pop();
-
-int stack[MAX_SIZE];
-int top=-1;
-
-void main()
-{
-	//valaue variable used to store elements in stack
-	//choice variable is used to decide what function to use
-	int value,choice;
-	
-	while(1)
- {
-	printf("***************************\n");
-	printf("1.push\n2.pop\n3.display\n");
-	printf("Enter your choice\n");
-	scanf("%d",&choice);
-	//Here We Are Using Switch Case For Push , Pop & Display Function
-		switch(choice)
-	 {
-		case 1:printf("enter the value to be push into stack\n ");
-		scanf("%d",&value);	
-		push(value);
-		break ;
-		case 2:pop();
-		 break;
-		case 3:display();
-		 break;
-		default:printf("wrong input please try again\n");
-	  }//end of switch
- }//end of while
-}//end of main
-
-void display(){
-	if(top==-1)
-	{	
-	  	printf("Stack is empty\n\n");	
-	}
-	else
-	{ 		 
- 		 printf("\nstack contains %d elements\n",top+1); 	
-	}
-	int i=0;
-	for(i=top;i>=0;i--)
-	{
-	 printf("%d\n",stack[i]);
-	}
+stack_t *stack_create(void) {
+    return (stack_t *)calloc(1, sizeof(stack_t));
 }
 
-void push(int value)
-{
-	if(top==MAX_SIZE-1)
-	{
-             printf("\nOverflow\n\n");   
-	}
-	else
-	{
-		//this statement will add wlwmwnts in stack
-	     	top=top+1;
-		//this statement will declared latest value which was inputed in stack as Top
-		stack[top]=value;
-	}
+void stack_push(stack_t *stack, void *val) {
+    stack_elem_t* new_elem = (stack_elem_t *)malloc(sizeof(stack_elem_t));
+    new_elem->value = val;
+    new_elem->next = stack->top;
+    stack->top = new_elem;
 }
 
-void pop()
-{
-	if(top==-1)
-	{
-           printf("\nUnderflow\n\n");
-		//If there is no element in stack & you tried pop then Underflow will occour.
-	}
-	else
-	{
-		//This will pop elements from stack
-		top=top-1;
-		
-	}
+void *stack_pop(stack_t *stack) {
+    if (!stack) { return NULL; }
+    void *val = NULL;
+    stack_elem_t *top_frame = stack->top;
+    if (top_frame) {
+        val = top_frame->value;
+        stack->top = top_frame->next;
+        free(top_frame);
+    } else {
+        stack->top = NULL; 
+    } 
+    return val;
+}
+
+void *stack_peek(stack_t *stack) {
+    if (!stack || !stack->top) { return NULL; }
+    return stack->top->value;
+}
+
+void stack_destroy(stack_t *stack) {
+    stack_elem_t *current_frame = stack->top;
+    while (current_frame) {
+        stack_elem_t *next = current_frame->next;
+        free(current_frame);
+        current_frame = next;
+    }
+    free(stack); 
+}
+
+void stack_destroy_with_elements(stack_t *stack) {
+    stack_elem_t *current_frame = stack->top;
+    while (current_frame) {
+        stack_elem_t *next = current_frame->next;
+        free(current_frame->value);
+        free(current_frame);
+        current_frame = next;
+    }
+    free(stack);
 }

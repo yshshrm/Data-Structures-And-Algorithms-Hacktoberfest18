@@ -20,3 +20,4 @@ public class binary_search {
     System.out.println((ans == -1) ? "Element not found" : "Element is found at index: " + ans);  
  }
 }
+

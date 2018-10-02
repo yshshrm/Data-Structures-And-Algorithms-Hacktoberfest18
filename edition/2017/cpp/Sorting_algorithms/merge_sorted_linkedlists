@@ -1,0 +1,86 @@
+/*
+  Merge two sorted lists A and B as one linked list
+  Node is defined as 
+  struct Node
+  {
+     int data;
+     struct Node *next;
+  }
+*/
+Node* MergeLists(Node *headA, Node* headB)
+{
+  // This is a "method-only" submission. 
+  // You only need to complete this method 
+    Node *tempA=headA;
+    Node *tempB=headB;
+    Node *headC=NULL;
+    Node *tempC=NULL;
+    while(tempA!=NULL && tempB!=NULL)
+        {
+        Node *ptr=new Node;
+        if(headC==NULL)
+            {
+                if(tempA->data < tempB->data)
+                {
+                    ptr->data=tempA->data;
+                    tempA=tempA->next;
+                }
+                else
+                {
+                    ptr->data=tempB->data;
+                    tempB=tempB->next;
+                }
+                ptr->next=NULL;
+                headC=tempC=ptr;
+            }
+        else
+            {
+                if(tempA->data < tempB->data)
+                {
+                    ptr->data=tempA->data;
+                    tempA=tempA->next;
+                }
+                else
+                {
+                    ptr->data=tempB->data;
+                    tempB=tempB->next;
+                }
+                tempC->next=ptr;
+                tempC=ptr;
+                ptr->next=NULL;
+            }
+    }
+    while(tempA!=NULL)
+        {
+        Node *ptr=new Node;
+        ptr->data=tempA->data;
+        ptr->next=NULL;
+        if(headC==NULL)
+            {
+            headC=tempC=ptr;
+        }
+        else
+            {
+            tempC->next=ptr;
+            tempC=ptr;
+        }
+        tempA=tempA->next;
+    }
+    while(tempB!=NULL)
+        {
+        Node *ptr=new Node;
+        ptr->data=tempB->data;
+        ptr->next=NULL;
+        if(headC==NULL)
+            {
+            headC=tempC=ptr;
+        }
+        else
+            {
+            tempC->next=ptr;
+            tempC=ptr;
+        }
+        tempB=tempB->next;
+    }
+    return headC;
+}
