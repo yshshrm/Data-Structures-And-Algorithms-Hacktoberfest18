@@ -23,6 +23,18 @@ const quicksort = startArray => {
 
 const testArray = [-2, -12, 13, -17 - 20, -16, 8, 11];
 
-console.log("Starting array: " + testArray);
-const sortedArray = quicksort(testArray);
-console.log("Quick-sorted array: " + sortedArray);
+const testQuickSort = (arr) => new Promise((resolve, reject) => {
+    if (arr) {
+        console.log("Starting array: " + testArray);
+        resolve(arr)
+    } else {
+        reject("there was some problem...")
+    }
+})
+
+testQuickSort(testArray).then(res => {
+    sorted = quicksort(res)
+    console.log(`Sorted array: ${sorted}`)
+    return res
+})
+ 
