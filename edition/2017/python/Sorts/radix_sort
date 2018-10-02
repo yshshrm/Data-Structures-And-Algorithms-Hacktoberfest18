@@ -1,0 +1,11 @@
+def radixsort(L):
+    # Only works for lists of non-negative integers!
+    maxValue = max(L)
+    def rsort(L, digitSelector):
+        if (digitSelector > maxValue):
+            return L
+        else:
+            zeroes = [x for x in L if (x & digitSelector == 0)]
+            ones = [x for x in L if (x & digitSelector != 0)]
+            return rsort(zeroes + ones, digitSelector << 1)
+    return rsort(L, 1)
