@@ -17,7 +17,7 @@ This Repo consists of data-structures and algorithms sorted by programming langu
 ### How to make PR
 1. Fork Repo onto your own account.
 2. Make your changes on your forked repo.
-3. Start a  Pull Request to master branch of the parent repo.
+3. Make Pull Request to master and enjoy.
 
 Hack on!
 God Speed
