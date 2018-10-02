@@ -40,4 +40,6 @@ this is a guidelines for contributing to Data-Structures-And-Algorithms-Hacktobe
 
    ```
    git push -u origin {your-branch-name}  
+   
+8. Make Pull Request
   
