@@ -2,7 +2,7 @@
 Install Git: 
 *Are you a first time user and just beginning with Open-Source projects? No problem! Here's [how you can install Git on your computer](https://www.digitalocean.com/community/tutorials/how-to-contribute-to-open-source-getting-started-with-git)*
 
-After you are done installing Git on your computer:
+###### After you are done installing Git on your computer:
 
 1. Fork this repository on Github.
 2. Clone it onto your computer by opening terminal and running the command git clone https://github.com/{your username}/Data-Structures-And-Algorithms-Hacktoberfest18.git
