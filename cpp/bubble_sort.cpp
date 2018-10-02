@@ -1,40 +1,40 @@
 #include <iostream>
-using namespace std;
-  
-// Function to swap, using call by reference
-void swap(int& a, int& b) 
-{ 
-    int temp = a; 
-    a = b; 
-    b = temp; 
-} 
-  
-// Actual Bubble sort 
-void bubbleSort(int arr[], int size) 
-{ 
-   int i, j; 
-   for (i = 0; i < size-1; i++)       
-  {
-       for (j = 0; j < (size-1)-i; j++)             
-           if (arr[j] > arr[j+1])                 
-              swap(arr[j], arr[j+1]); 
-  }
-} 
-  
-/* Function to print an array */
-void print(int arr[], int size) 
-{ 
-    int i; 
-    for (i=0; i < size; i++) 
-        cout<<arr[i]<<' ';
-    cout<<endl;
-} 
 
-int main() 
-{ 
-    int arr[] = { 7, 89, 44, 11, 4, 12, 9 }; 
-    int n = sizeof(arr)/sizeof(arr[0]); 
-    bubbleSort(arr, n); 
-    printArray(arr, n); 
-    return 0; 
-} 
+void bubbleSort(int *array, int n);
+
+int main()
+{
+    int arr[] = {13, 1024, 995, 5, 15, 45, 105, 1, 67};
+    int arr_size = sizeof(arr)/sizeof(arr[0]);
+
+    bubbleSort(arr, arr_size);
+
+    for (int i = 0; i < arr_size; ++i)
+        std::cout << arr[i] << std::endl;
+
+    return 0;
+}
+
+void bubbleSort(int *array, int n)
+{
+    bool swapped = true;
+    int j = 0;
+    int temp;
+
+    while (swapped)
+    {
+        swapped = false;
+        j++;
+        for (int i = 0; i < n - j; ++i)
+        {
+            if (array[i] > array[i + 1])
+            {
+                temp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+                swapped = true;
+            }
+        }
+    }
+}
+
