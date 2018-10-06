@@ -1,0 +1,1 @@
+const factorial = num => num == 0 ? 1: n * factorial(num - 1)
