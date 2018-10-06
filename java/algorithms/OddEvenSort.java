@@ -34,9 +34,7 @@ class OddEven
 	}
 	private void swap(int one, int two)
 	{
-		long temp = a[one];
-		a[one] = a[two];
-		a[two] = temp;
+		  a[two] = (a[one]+a[two]) - (a[one]=a[two]);
 	}
 }
 class OddEvenSort
