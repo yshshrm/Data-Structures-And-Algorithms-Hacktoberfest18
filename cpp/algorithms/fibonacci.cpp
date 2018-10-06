@@ -33,7 +33,7 @@ int main(){
     }
 
     for(int i=0; i<n; i++){
-        cout << i << " : " << fib2(i, arr) << endl;	
+        cout << i << " : " << fib2(i, arr) << "\n";	
     }
 
 }
