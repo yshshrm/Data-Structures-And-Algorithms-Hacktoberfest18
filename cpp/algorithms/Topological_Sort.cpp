@@ -1,6 +1,10 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 int * topoSort(vector<int> graph[], int N)
 {
-   int indegree[N] = {0};
+   int indegree[N];
+   memset(indegree, 0, sizeof indegree);
    int* topo = new int[N+1];
    
    for(int j = 0;j<N;++j){
@@ -25,4 +29,8 @@ int * topoSort(vector<int> graph[], int N)
        }
    }
    return topo;
+}
+
+int main() {
+    
 }

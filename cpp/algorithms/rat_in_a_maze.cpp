@@ -1,6 +1,9 @@
 //The directions in which the rat can move are Up, Down, Left, Right
 
-#include<algorithm>
+#include<bits/stdc++.h>
+#define MAX 100005
+
+using namespace std;
 
 int xm[]={1,0,-1,0};
 int ym[]={0,1,0,-1};
@@ -40,4 +43,8 @@ vector<string> printPath(int m[MAX][MAX], int n)
     solve(0, 0, n, m, ans, current);
     sort(ans.begin(), ans.end());
     return ans;
+}
+
+int main() {
+    
 }
