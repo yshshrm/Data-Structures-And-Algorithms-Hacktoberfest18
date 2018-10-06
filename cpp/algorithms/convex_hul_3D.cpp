@@ -1,4 +1,4 @@
-i#include <algorithm>
+#include <algorithm>
 #include <cmath>
 #include <iostream>
 #include <utility>
