@@ -18,3 +18,5 @@ bogosort = function(v){
     }
     return v;
 }
+
+console.log(bogosort([5,6,4,3,2,1,23,4,5,33]))
