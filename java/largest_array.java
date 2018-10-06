@@ -3,7 +3,7 @@ import java.util.stream.IntStream;
 
 public class largest_array {
 
-	public Array largestArray(int[] a, int[] b){
+	public void largestArray(int[] a, int[] b){
 		int sumOfA = IntStream.of(a).sum();
 		int sumOfB = IntStream.of(b).sum();
 		if(sumOfA > sumOfB){
