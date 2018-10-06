@@ -1,1 +1,1 @@
-Repositorio com algoritmos frequentemente usados em AA
+Repository of Python implementation of frequently used algorithms.
