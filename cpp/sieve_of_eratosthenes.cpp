@@ -5,8 +5,7 @@ bool prime[1000005];
 void Sieve(long long int n){
     prime[0]=false;
     prime[1]=false;
-    for(long long int i=2;i<1000005;i++)
-        prime[i]=true;
+    memset(prime+2*sizeof(bool), true, 1000003);
     long long int m = sqrt(n);
     for(long long int i=2;i<=m;i++)
         if(prime[i])
