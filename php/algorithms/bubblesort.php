@@ -3,7 +3,7 @@
 $example = array(12,2,5,6,9, -1, 23, 3);
 $array_size = count($example); 
 $count = 0; //How many times it sorts
-$i = 1; // Used itterator
+$i = 1; // Used iterator
 
 //Print our numbers
 echo "<br>Our numbers: <br>";
@@ -23,7 +23,7 @@ for ( $array = 0; $array < $array_size; $array++ )
          $example[$arrayValue] = $example[$arrayValue+1]; //The Swapping Part
          $example[$arrayValue+1] = $temp;
 		 $count++;
-		 echo "SORTED". $i. "<br>";  //Prints amount of /sortings in the array
+		 echo "SORTED". $i. "<br>";  //Prints amount of /sorting in the array
 		 $i++;
       }
    }

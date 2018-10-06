@@ -13,7 +13,7 @@
             if($arr[$i]==$k)
             {
                 return $i+1;
-                echo "<script>alert('Index of ".$k." is ".$i+1."')</script>";
+                echo "<script>alert('Index of ".$k." is ".$i+1 ."')</script>";
             }
         }
         return -1;
