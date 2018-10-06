@@ -16,7 +16,7 @@ int binsearch(int arr[],int ele,int beg,int end){
 	return -1;
 }
 int main(){
-	int n;
+	const int max = 100;;
 	cout<<"Enter the size of your array : ";
 	cin>>n;
 	int arr[n];
