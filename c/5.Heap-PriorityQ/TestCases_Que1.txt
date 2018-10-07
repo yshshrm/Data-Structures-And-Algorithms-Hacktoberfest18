@@ -1,0 +1,24 @@
+Input 1:
+iitguwahati 
+
+Output 1:
+itiaitaguwh (this is one possible output, if you print any other which follows Bob's rearrangement, then it is acceptable)
+
+Input 2:
+aaaaabbbbbccccc
+
+Ouput 2:
+abcabcabcabcabc (this is one possible output, if you print any other which follows Bob's rearrangement, then it is acceptable)
+
+Input 3:
+geeksforgeeks
+
+Output 3:
+egekesegksfor (this is one possible output, if you print any other which follows Bob's rearrangement, then it is acceptable)
+
+Input 4:
+aaaaaabbbbbbbb
+
+Ouput 4:
+Not Possible
+
