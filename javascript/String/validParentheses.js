@@ -18,12 +18,12 @@ function isValidParentheses(s) {
         if ('({['.includes(c)) {
             stack.push(c)
         // if closing paren, check that matching closing paren is on the stack
-        } else if (stack.length == 0 || matchingParen[c] !== stack.pop()) {
+        } else if (stack.length === 0 || matchingParen[c] !== stack.pop()) {
             return false;
         }
     }
 
-    return stack.length == 0
+    return stack.length === 0
 }
 
 console.log(isValidParentheses('()'), true);
