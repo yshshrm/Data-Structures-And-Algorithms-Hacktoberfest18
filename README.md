@@ -8,7 +8,7 @@ This Repo consists of data-structures and algorithms sorted by programming langu
 
 ### Contributing Guidelines
 - The repository is structured language-wise i.e. algorithms in a certain language go in a specific folder.
-- The naming convention to be followed is ```algo_name.language_extention``` i.e. the overall pathshould be ```language/algo_name.language_extention```
+- The naming convention to be followed is ```algorithm_name.language_extension``` i.e. the overall pathshould be ```language/algorithm_name.language_extension```
 - Example of above points: heapsort in Java should go into `java/heapsort.java`
 - It is your choice to include only the function or the entire program for the algo.
 - If folder for your language does not exist, create a new one.
