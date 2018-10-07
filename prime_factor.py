@@ -1,5 +1,5 @@
-#this is a program to find the largest prime factor of a number
-#here t is the test case and n is the number of input
+#this is a program to find the largest prime factor multiple of a number
+#here t is the test case and n is the value of input
 t = int(input())
 while(t):
     t-=1
@@ -9,8 +9,6 @@ while(t):
         if(n%i==0):
             n = int(n/i)
         i+=1
-    if(n>2):
+    if(n>=2):
         i=n
         print(i)
-
-    
