@@ -6,3 +6,11 @@ function isPalindrome(str){
   }
   return true;
 }
+
+function isPalindrome2(str) {
+  var original = str.split('');
+  var reversed = str.split('').reverse();
+  return original.every(function(ch, index){
+    return reversed[index] === ch;
+  });
+}
