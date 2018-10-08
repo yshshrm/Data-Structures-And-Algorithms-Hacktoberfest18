@@ -19,9 +19,9 @@ def main():
 	print("Enter any number: ")
 	n = int(input())
 	lst = primeFactorisation(n)
-	print("Prime factorisation of " + str(n) + " is: ")
-	for x in lst:
-		print(x, end = ' ')
+	print("Prime factorisation of %d is: " % n)
+	for x in sorted(set(lst)):
+		print("%d^%d" % (x, lst.count(x)), end= " ")
 
 if __name__ == '__main__':
 	main()
