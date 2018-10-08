@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 typedef long long int lli;
  
 lli x[10010], y[10010];
