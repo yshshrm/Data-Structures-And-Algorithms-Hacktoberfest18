@@ -1,0 +1,1 @@
+cc -std=c99 -Wall -Werror -Wextra -pedantic NQueens.c main.c -o NQueens.out
