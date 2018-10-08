@@ -1,11 +1,14 @@
-const express=require('express');
-const app=express();
-const bodyParser=require('body-parser');
-const path=require('path');
+'use strict';
+
+// Module dependencies
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const path = require('path');
 const aws = require('aws-sdk');
 const multers3 = require('multer-s3');
 const multer = require('multer');
-const routes={
+const routes = {
     newUser:require('./routes/newUser'),
     userLogin:require('./routes/userLogin'),
     admin:require('./routes/admin')

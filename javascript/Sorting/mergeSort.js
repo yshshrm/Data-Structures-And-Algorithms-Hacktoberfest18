@@ -1,4 +1,4 @@
-function mergeSort (arr) {
+const mergeSort = (arr) => {
   if (arr.length === 1) return arr
 
   const middle = Math.floor(arr.length/2)
@@ -9,7 +9,7 @@ function mergeSort (arr) {
 }
 
 
-function merge (left, right) {
+const merge = (left, right) => {
   let result = []
   let indexLeft = 0
   let indexRight = 0
