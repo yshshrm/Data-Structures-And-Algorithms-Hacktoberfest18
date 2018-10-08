@@ -1,4 +1,4 @@
-# How dows heapsort works: https://en.wikipedia.org/wiki/Heapsort
+# How does heapsort works: https://en.wikipedia.org/wiki/Heapsort
 
 def heapsort(list_of_elements):
     list_size = len(list_of_elements) - 1
