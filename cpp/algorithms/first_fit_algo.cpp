@@ -56,28 +56,24 @@ int main()
     int n;
     cin>>n;
     int memory[n];
-    int m2[n];
-    int m3[n];
+  
     cout<<"\nEnter "<<n<<"values";
     for(int i=0; i<n; i++)
     {
         cin>>memory[i];
-        m2[i] = memory[i];
-        m3[i] = memory[i];
+      
     }
 
     cout<<"\nEnter the no. of processes";
     int m;
     cin>>m;
     int process[m];
-    int p2[m];
-    int p3[m];
+ 
     cout<<"\nEnter the size of "<<m<<"processes";
     for(int i=0; i<m; i++)
     {
         cin>>process[i];
-        p2[i] = process[i];
-        p3[i] = process[i];
+       
     }
     cout<<"\n**********FIRST FIT************************";
     firstfit f;
