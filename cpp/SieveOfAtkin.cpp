@@ -60,7 +60,8 @@ int SieveOfAtkin(int limit)
   
 int main(void) 
 { 
-    int limit = 20; 
+    int limit; 
+    cin>>limit;
     SieveOfAtkin(limit); 
     return 0; 
 } 
