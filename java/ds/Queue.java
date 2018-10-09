@@ -59,6 +59,16 @@ public class Queue{
         System.out.println();
     }
 
+    public int peek() {
+        // To get the head of the queue but do not remove it, return null if empty
+        if(front == -1){
+            System.out.println("Queue Empty");
+            return null;
+        } else  {
+            return arr[front];
+        }
+    }
+
     public static void main(String args[]){
         //Driver code to check the code.
         Queue que = new Queue(4);
@@ -67,6 +77,7 @@ public class Queue{
         que.insert(3);
         que.insert(4);
         que.insert(5);
+        que.peek();
         que.display();
         System.out.println(que.remove());
         System.out.println(que.remove());
