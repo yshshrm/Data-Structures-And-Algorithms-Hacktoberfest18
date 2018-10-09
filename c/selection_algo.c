@@ -1,4 +1,5 @@
-nclude <stdio.h> 
+#include <stdio.h> 
+#include <stdio.h>
   
 void swap(int *xp, int *yp) 
 { 
