@@ -1,6 +1,6 @@
 <?php
 
-$example = array(12,2,5,6,9, -1, 23, 3);
+$example = array(12,2,5,6,9, -1, 23, 3,1,2,3,4,5,6,7,8,1);
 $array_size = count($example); 
 $count = 0; //How many times it sorts
 $i = 1; // Used itterator
