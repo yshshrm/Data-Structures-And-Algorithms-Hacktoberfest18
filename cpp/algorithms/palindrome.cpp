@@ -14,6 +14,5 @@ int main()
 		cout<<"pali \n";
 	else
 		cout<<"not pali \n";
-	
 	 return 0;
 }
