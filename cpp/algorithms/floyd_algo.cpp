@@ -1,4 +1,4 @@
-/ C Program for Floyd Warshall Algorithm 
+// C Program for Floyd Warshall Algorithm 
 #include<stdio.h> 
   
 // Number of vertices in the graph 
