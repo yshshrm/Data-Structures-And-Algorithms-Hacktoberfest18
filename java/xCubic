@@ -1,0 +1,10 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner dataIn = new Scanner(System.in);
+        int x = Integer.parseInt(dataIn.nextLine());
+        x = (int) Math.pow(x, 3);
+        System.out.println(x);
+    }
+}
