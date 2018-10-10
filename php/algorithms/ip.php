@@ -1,5 +1,5 @@
-/*author: rishav krishna(https://github.com/rishu22)*/
 <?php  
+/*author: rishav krishna(https://github.com/rishu22)*/
 function getip()
 {
 
@@ -21,5 +21,3 @@ function getip()
 	}
 	return $ip;
 }
-
-?>
