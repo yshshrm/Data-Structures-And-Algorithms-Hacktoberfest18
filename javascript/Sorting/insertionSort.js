@@ -1,4 +1,4 @@
-function insertionSort (values) {
+const insertionSort = (values) => {
   for (var i = 0; i < values.length; i++) {
     let value = values[i];
     for (var j = i - 1; j > -1 && values[j] > value; j--) {

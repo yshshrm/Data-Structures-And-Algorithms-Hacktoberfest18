@@ -1,4 +1,4 @@
-function selectionSort(values) {
+const selectionSort = (values) => {
     for (i = 0; i < values.length; i++) {
         let indexOfMin = i;
         for (let j = i + 1; j < values.length; j++) {

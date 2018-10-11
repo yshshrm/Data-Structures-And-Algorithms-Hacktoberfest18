@@ -9,7 +9,7 @@ let mod = (n, m) => ((n % m) + m) % m; // js modulo bug for negative numbers
 let A = 'A'.charCodeAt();
 let a = 'a'.charCodeAt();
 
-function vigenere(plain, k) {
+const vigenere = (plain, k) => {
 
     if (!isAlpha(k)) {
         return "Provided [k] must be all alpha";

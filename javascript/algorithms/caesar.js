@@ -9,7 +9,7 @@ let mod = (n, m) => ((n % m) + m) % m; // js modulo bug for negative numbers
 let A = 'A'.charCodeAt();
 let a = 'a'.charCodeAt();
 
-function caesar(plain, k) {
+const caesar = (plain, k) => {
 
     // k can not be bigger than the length of the alphabet alphabet
     k = mod(k, ALPHABET_SIZE);

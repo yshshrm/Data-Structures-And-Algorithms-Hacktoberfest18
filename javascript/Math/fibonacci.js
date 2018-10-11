@@ -9,9 +9,9 @@ let sum = 0;
 
 while (a < cap){
 
-    a % 2 === 0 ? sum+= a: sum += 0;
+    a % 2 === 0 ? sum += a: sum += 0;
     c = a;
-    a = a+b;
+    a = a +b;
     b = c;
 
 }

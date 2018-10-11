@@ -1,4 +1,4 @@
-function reverse(str) {
+const reverse = (str) => {
     let revd = "";
     for (let letter of str.split('')) {
         revd = letter + revd;
@@ -6,5 +6,5 @@ function reverse(str) {
     return revd;
 }
 
-var word = "ocean";
+let word = "ocean";
 console.log(reverse(word));

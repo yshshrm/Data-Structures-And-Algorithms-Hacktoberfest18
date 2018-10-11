@@ -1,5 +1,5 @@
-function isPrime(n){
-  var divisor = 2;
+const isPrime = (n) => {
+  let divisor = 2;
 
   while (n > divisor){
     if(n % divisor == 0){
