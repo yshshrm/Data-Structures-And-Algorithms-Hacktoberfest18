@@ -20,14 +20,3 @@ int main()
 	printf("Cube root of %f is %f\n", x, k);
 	return 0;
 }
-			k=k-p;
-			p=p/10;
-		}
-		else
-		k=k+p;
-		if(p==0.0000001)
-			break;
-	}
-	printf("Cube root of %f is %f\n", x, k);
-	return 0;
-}
