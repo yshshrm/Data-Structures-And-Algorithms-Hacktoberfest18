@@ -8,7 +8,7 @@ int max(int a,int b)
 {
     return (a>b)?a:b;
 }
-void lcs_length(char X[],char Y[])
+void lcs_length(char X[],char Y[])	//This function contains DP code and creates the table
 {
     m=strlen(X);
     n=strlen(Y);
@@ -44,7 +44,7 @@ void lcs_length(char X[],char Y[])
         }
     }
 }
-void print_lcs(int i,int j)
+void print_lcs(int i,int j)	//This function prints the actual lcs
 {
     if(i==0 || j==0)
         return ;
