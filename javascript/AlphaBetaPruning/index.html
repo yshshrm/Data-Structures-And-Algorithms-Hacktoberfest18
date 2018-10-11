@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="abTreePractice">
+  <head>
+    <meta charset="utf-8">
+    <title>Alpha-Beta Pruning Practice</title>
+    
+    <meta property="og:title" content="Alpha-Beta Pruning Practice">
+    <meta property="og:site_name" content="Alpha-Beta Pruning Practice">
+    
+    <meta property="og:type" content="website">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/5.0.12/bootstrap-slider.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/5.0.12/css/bootstrap-slider.min.css">
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body ng-controller="MainCtrl">
+    <nav class="navbar navbar-inverse navbar-static-top nomargin" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand">Alpha-Beta Pruning Practice</span>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+          <li ng-click="setUseAb(true)" class="{{useAb ? 'active' : ''}}"><a>αβ</a></li>
+          <li ng-click="setUseAb(false)" class="{{!useAb ? 'active' : ''}}"><a>Cutoff</a></li>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid nopadding">
+      <ab-tree class="ab-tree" tree="tree" use-ab="useAb" re-render="reRender"></ab-tree>
+      <div class="container-fluid ctrl-panel">
+        <div class="row text-center">
+          <button ng-click="toggleABVisual()" type="button" class="btn btn-default">
+            {{actionLQ.inAction ? 'Stop' : 'Start'}} Animation
+          </button>
+        </div>
+        <div class="{{actionLQ.inAction ? '' : 'hidden'}}">
+          <div class="row text-center">
+            <div class="btn-group">
+              <button ng-disabled="!actionLQ.inAction" ng-click="play()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-play"></span>
+              </button>
+              <button ng-disabled="!actionLQ.inAction" ng-click="pause()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-pause"></span>
+              </button>
+              <button ng-disabled="!actionLQ.inAction" ng-click="stepBackward()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-backward"></span>
+              </button>
+              <button ng-disabled="!actionLQ.inAction" ng-click="stepForward()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-forward"></span>
+              </button>
+              <button ng-disabled="!actionLQ.inAction" ng-click="goToBeginning()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-fast-backward"></span>
+              </button>
+              <button ng-disabled="!actionLQ.inAction" ng-click="goToEnd()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-fast-forward"></span>
+              </button>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="progress">
+              <div class="progress-bar"
+                   role="progressbar"
+                   aria-valuenow="{{actionLQ.lastAction + 1 + 0.001}}"
+                   aria-valuemin="0"
+                   aria-valuemax="{{actionLQ.length + 0.001}}"
+                   style="width: {{((actionLQ.lastAction + 1) / actionLQ.length) * 100 + 0.0001}}%"
+              >
+                <span class="sr-only">{{((actionLQ.lastAction + 1) / actionLQ.length) * 100}}% Complete (success)</span>
+              </div>
+            </div>
+          </div>
+          <div class="row text-center">
+            <label class="slider-label left">Slow</label>
+            <input class="slider"
+                   type="text"
+                   data-placement="bottom"
+                   data-slider-min="25"
+                   data-slider-max="1675"
+                   data-slider-step="25"
+                   data-slider-value="850"
+            />
+            <label class="slider-label right">Fast</label>
+          </div>
+        </div>
+        <div class="{{actionLQ.inAction ? 'hidden' : ''}}">
+          <hr/>
+          <div class="row">
+            <div class="col-sm-6 button-label-container text-right">
+              <label class="button-label">Depth</label>
+            </div>
+            <div class="col-sm-6">
+              <div class="btn-group">
+                <button ng-click="incrDepth(-1)" type="button" class="btn btn-default">-</button>
+                <button ng-click="incrDepth(1)" type="button" class="btn btn-default">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 button-label-container text-right">
+              <label class="button-label">Branching Factor</label>
+            </div>
+            <div class="col-sm-6">
+              <div class="btn-group">
+                <button ng-click="incrBranchingFactor(-1)" type="button" class="btn btn-default">-</button>
+                <button ng-click="incrBranchingFactor(1)" type="button" class="btn btn-default">+</button>
+              </div>
+            </div>
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <button ng-click="flipMax()" type="button" class="btn btn-default">Swap Min/Max</button>
+            </div>
+            <div class="col-sm-6 text-left">
+              <button ng-click="generateRootNode()" type="button" class="btn btn-default">Regenerate Tree</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <button ng-disabled="actionLQ.inAction" ng-click="resetTree()" type="button" class="btn btn-default">Reset Tree</button>
+            </div>
+            <div class="col-sm-6 text-left">
+              <button ng-disabled="actionLQ.inAction" ng-click="showSolution()" type="button" class="btn btn-default">Show Solution</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <button ng-disabled="actionLQ.inAction" ng-click="checkAnswer()" type="button" class="btn btn-default">Check Answer</button>
+            </div>
+            <div class="col-sm-6 button-label-container">
+              <label class="button-label answer-{{correct}}">
+                  {{(correct == null) ? '--' : (correct ? 'Correct!' : 'Incorrect')}}
+                </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <div class="prune-info">
+      <span>Nodes are pruned when {{useAb ? 'β ≤ α' : 'value is in cutoff range'}}.</span>
+    </div>
+  </body>
+</html>
