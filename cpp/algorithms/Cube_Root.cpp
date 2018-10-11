@@ -6,17 +6,6 @@ int main()
 {
 	float x, k=0, p=1;
 	scanf("%f", &x);
-	while(k*k*k != x)
-	{
-		if(k*k*k>x)
-		{#include <iostream>
-
-using namespace std;
-
-int main()
-{
-	float x, k=0, p=1;
-	scanf("%f", &x);
 	while(k*k*k != x && p>=0.000001)
 	{
 		if(k*k*k > x)
