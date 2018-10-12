@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>A*</title>
+    </head>
+    <body>
+        <canvas height="800" width="1200"></canvas>
+        <script type="text/javascript">
+        var canvas = document.querySelector("canvas");
+        var ctx = canvas.getContext("2d");
+
+        var cols = 100;
+        var rows = 100;
+        var grid = new Array(cols);
+
+        var openSet = [];
+        var closedSet = [];
+        var start,end;
+        var w,h;
+        var done = false;
+
+        // Utility
+        function rect(x,y,w,h) {
+            ctx.fillRect(x,y,w,h);
+        }
+        
+        function removeFromArray(arr,el) {
+            for (let i = arr.length-1; i >= 0; i--) {
+                if (arr[i] == el) {
+                    arr.splice(i,1);
+                }
+            }
+        }
+
+        function heuristic(a,b) {
+            var Ca = Math.abs(a.i - b.i);
+            var Cb = Math.abs(a.j - b.j);
+            var dist = Math.hypot(Ca,Cb);
+            return dist;
+        }
+
+        //-----END-------
+
+
+        class Spot {
+            constructor(i,j) {
+                this.i = i;
+                this.j = j
+                this.f = 0;
+                this.g = 0;
+                this.h = 0;
+                this.wall = false;
+                this.neighbours = [];
+                this.previous = undefined;
+
+                if (!(Math.random() > 0.30)) {
+                    this.wall = true;
+                };
+            }
+             
+
+            show(col) {
+                ctx.fillStyle = col;
+                if (this.wall) {
+                    ctx.fillStyle = "black";
+                }
+                rect(this.i * w, this.j * h, w, h);
+                ctx.strokeStyle = "black";
+                ctx.strokeRect(this.i * w, this.j * h, w, h);
+            }
+
+            addNeighbours(grid) {
+                var i = this.i;
+                var j = this.j;
+
+                if (i < cols - 1) {
+                    this.neighbours.push(grid[i + 1][j]);
+                }
+                if (i > 0) {
+                    this.neighbours.push(grid[i - 1][j]);
+                }
+                if (j < rows - 1) {
+                    this.neighbours.push(grid[i][j + 1]);
+                }
+                if (j > 0) {
+                    this.neighbours.push(grid[i][j - 1]);
+                }
+                
+
+            }
+
+        }
+
+        function setup() {
+            console.log("A*");
+
+            w = canvas.width / cols;
+            h = canvas.height / rows;
+
+            // Making a 2D Array
+            for (var i = 0; i < cols; i++) {
+                grid[i] = new Array(rows); 
+            }
+
+            for (var i = 0; i < cols; i++) {
+                for (var j = 0; j < rows; j++) {
+                    grid[i][j] = new Spot(i,j);
+                }
+            }
+
+            for (var i = 0; i < cols; i++) {
+                for (var j = 0; j < rows; j++) {
+                    grid[i][j].addNeighbours(grid);
+                }
+            }
+
+            start = grid[0][0];
+            end = grid[cols - 1][rows - 1];
+            end.wall = false;
+
+            openSet.push(start);
+        
+        }    
+        
+
+        function loop() {
+            if(!done){
+                if (openSet.length >  0) {
+                    
+                    var winner = 0;
+                    for (var i = 0; i < openSet.length; i++) {
+                        if (openSet[i].f < openSet[winner].f) {
+                            winner = i;
+                        }
+                    }
+
+                    var current = openSet[winner];
+
+                    if (current === end) {
+                        console.log("Done!!");
+                        done = true;
+                    }
+
+                    removeFromArray(openSet,current);
+                    closedSet.push(current);                
+
+                    var neighbours = current.neighbours;
+                    for (var i = 0; i < neighbours.length; i++) {
+                        var neighbour = neighbours[i];
+                        
+                        if(!closedSet.includes(neighbour) && !neighbour.wall) {
+                            var tempG = current.g + 1;
+                            
+                            if (openSet.includes(neighbour)) {
+                                if (tempG < neighbour.g) {
+                                    neighbour.g = tempG;
+                                }
+                            } else {
+                                neighbour.g = tempG;
+                                openSet.push(neighbour);
+                            }
+
+                            neighbour.h = heuristic(neighbour,end);
+                            neighbour.f = neighbour.g + neighbour.h;
+                            neighbour.previous = current;
+
+                        }
+                        
+                    }
+
+                } else {
+                    // No Solution
+                }
+
+                for (let i = 0; i < cols; i++) {
+                    for (let j = 0; j < rows; j++) {
+                        grid[i][j].show("white");
+                    }
+                }
+
+                for (let i = 0; i < closedSet.length; i++) {
+                    closedSet[i].show("red");
+                }
+
+                for (let i = 0; i < openSet.length; i++) {
+                    openSet[i].show("green");
+                }
+
+                let path = [];
+                let temp = current;
+                path.push(temp);
+                while(temp.previous) {
+                    path.push(temp.previous);
+                    temp = temp.previous;
+                }
+                
+                for (let i = 0; i < path.length; i++) {
+                    path[i].show("blue");
+                }
+            }
+        }
+
+        setup();
+        window.setInterval(loop,1000/60);
+        
+        </script>
+    </body>
+</html>
