@@ -8,11 +8,11 @@ public class delete_list_head_node() {
         }
     
         ListNode tempNode = null;
-    
-        while (head.next != null) {
+        if (head.next != null) {
             tempNode = head.next;
             head.next  = null;
         }
+		head=null;
         return tempNode;
     }
 }
