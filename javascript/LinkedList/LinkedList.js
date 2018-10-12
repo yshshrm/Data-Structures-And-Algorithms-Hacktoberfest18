@@ -9,7 +9,7 @@ function Node(val) {
 
 Node.prototype.addToEnd = function(val) {
   const end = new Node(val);
-  let n = this.head;
+  let n = this;
   while (n.next) {
     n = n.next;
   }
