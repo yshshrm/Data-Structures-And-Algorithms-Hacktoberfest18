@@ -1,0 +1,82 @@
+#include <iostream>
+#include <vector>
+#include <math.h>
+
+namespace calc {
+
+	class vector {
+
+		double x, y, z;
+
+	public:
+
+		double dotProduct(calc::vector u, calc::vector v) { return (u.x * v.x) + (u.y * v.y) + (u.z * v.z); }
+
+		double magnitude(calc::vector v) {	return sqrt(v.dotProduct(v, v)); }
+
+		void setVector(int a, int b, int c) {
+			x = a, y = b, z = c;
+		}
+
+		calc::vector crossProduct(calc::vector u, calc::vector v) {
+			calc::vector r;
+
+			r.x = (u.y * v.z) - (u.z * v.y);
+
+			r.y = (u.x * v.z) - (u.z * v.x);
+
+			r.y *= -1;
+
+			r.z = (u.x * v.y) - (u.y * v.x);
+
+			return r;
+		}
+
+		friend std::istream& operator>>(std::istream& is, vector& C) {
+			is >> C.x >> C.y >> C.z;
+			return is;
+		}
+
+		friend std::ostream& operator<<(std::ostream& os, const vector& C) {
+		    os << '[' << C.x << ", " << C.y << ", " << C.z << ']';
+		    return os;
+		}
+
+	};
+}
+
+void printMatrix(std::vector<std::vector<int> > v) {
+	for(int i = 0; i < 2; ++i){
+		for(int j = 0; j < 3; j++){
+			std::cout << v[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
+}
+
+
+
+
+int main() {
+
+	calc::vector v1, v2, result;
+
+	v1.setVector(6, 10, -3);
+	v2.setVector(-11, 0, -9);
+	
+/*	std::cout << "Enter first vector e.g. '7 16 3': ";
+	std::cin >> v1;
+	std::cout << "Enter second vector e.g. '7 16 3': ";
+	std::cin >> v2; 
+	
+	the above code is for allowing user to input vector elements*/
+
+	std::cout << v1 << " x " << v2 << " = " << result.crossProduct(v1, v2) << std::endl;
+	std::cout << '|' << result.crossProduct(v1, v2) << '|' << " = "<< result.magnitude(result.crossProduct(v1, v2)) << std::endl;
+	std::cout << v1 << " . " << v2 << " = " << result.dotProduct(v1, v2);
+
+	if(result.dotProduct(v1, v2) == 0) {
+
+	}
+
+}
