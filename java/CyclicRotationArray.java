@@ -22,7 +22,7 @@ public class CyclicRotationArray {
 	
 	public static void main(String args[]) {
 		
-		CyclicRotation rotate=new CyclicRotation();
+		CyclicRotationArray rotate=new CyclicRotationArray();
 		int[] arr= {1,2,3,4,5,6};
 		
 		rotate.Rotate(arr);
