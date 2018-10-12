@@ -20,4 +20,5 @@ printf("b: ");
 scanf("\n%d", &b);
 
 printf("The gcd(%d,%d) = %d\n", a, b, gcd(a,b));
+return 0;
 }
