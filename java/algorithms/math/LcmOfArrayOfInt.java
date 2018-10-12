@@ -23,19 +23,17 @@ public class LcmOfArrayOfInt {
                    counter++;
                }
 
-               // Divide element_array by devisor if complete
-               // division i.e. without remainder then replace
-               // number with quotient; used for find next factor
+               // Divide array of integers by divisor
+               // if divisible completely i.e. without remainder
+               // then replace the number with quotient
                if (array[i] % divisor == 0) {
                    divisible = true;
                    array[i] = array[i] / divisor;
                }
            }
 
-           // If divisor able to completely divide any number
-           // from array multiply with lcm_of_array_elements
-           // and store into lcm_of_array_elements and continue
-           // to same divisor for next factor finding.
+           // If divisor able to completely divide any number from array
+           // replace lcm_of_array_int with multiplication of divisor and lcm_of_array_int
            // else increment divisor
            if (divisible) {
                lcm_of_array_int = lcm_of_array_int * divisor;
