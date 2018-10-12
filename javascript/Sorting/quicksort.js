@@ -21,6 +21,19 @@ const quicksort = startArray => {
     }
 }
 
+// Quicksort using modern ES spec
+
+const modernQuicksort = array => {
+    if (array.length === 0) return [];
+    let [pivot, ...rest] = array;
+
+    return [
+        ...modernQuicksort(rest.filter(left => left <= pivot)),
+        pivot,
+        ...modernQuicksort(rest.filter(right => right > pivot))
+    ];
+};
+
 const testArray = [-2, -12, 13, -17 - 20, -16, 8, 11];
 
 const testQuickSort = (arr) => new Promise((resolve, reject) => {
@@ -37,4 +50,5 @@ testQuickSort(testArray).then(res => {
     console.log(`Sorted array: ${sorted}`)
     return res
 })
- 
+
+console.log(`Sorted array (Modern ES spec): ${modernQuicksort(testArray)}`)
