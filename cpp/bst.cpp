@@ -57,6 +57,38 @@ node* Search(node* root,int key)
         return Search(root->right,key);
 }
 
+void preorderTraversal(node* root)
+{
+    if(root!=NULL)
+    {
+        cout<<root->data<<" ";
+        preorderTraversal(root->left);
+        preorderTraversal(root->right);
+    }
+}
+
+
+void inorderTraversal(node* root)
+{
+    if(root!=NULL)
+    {
+        inorderTraversal(root->left);
+        cout<<root->data<<" ";
+        inorderTraversal(root->right);
+    }
+}
+
+
+void postorderTraversal(node* root)
+{
+    if(root!=NULL)
+    {
+        postorderTraversal(root->left);
+        postorderTraversal(root->right);
+        cout<<root->data<<" ";
+    }
+}
+
 void printlevel(node* root)
 {
     queue<node*> q;
