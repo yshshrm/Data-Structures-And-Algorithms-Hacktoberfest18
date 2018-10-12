@@ -1,5 +1,5 @@
 ### Pre-requisites:
-Install Git: 
+#### Install Git: 
 *Are you a first time user and just beginning with Open-Source projects? No problem! Here's [how you can install Git on your computer](https://www.digitalocean.com/community/tutorials/how-to-contribute-to-open-source-getting-started-with-git)*
 
 ### After you are done installing Git on your computer:
@@ -40,8 +40,8 @@ $ git merge upstream/master
 $ git checkout new-branch
 $ git merge master
 ```
-7. Now push the changes to the current branch of your forked repository
+10. Now push the changes to the current branch of your forked repository
 ```sh
 $ git push --set-upstream origin new-branch
 ```
-8. Now you can create a Pull Request with the chosen branch as `new-branch`
+11. Now you can create a Pull Request with the chosen branch as `new-branch`
