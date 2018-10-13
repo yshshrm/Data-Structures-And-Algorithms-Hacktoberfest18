@@ -16,7 +16,7 @@ class ListNode(object):
 
 
 class Solution(object):
-    def mergeKLists(self, lists):
+    def merge_k_lists(self, lists):
         """
         :type lists: List[ListNode]
         :rtype: ListNode
@@ -70,5 +70,5 @@ if __name__ == "__main__":
         int(x) for x in "1->1->2->3->4->4->5->6".split('->')
     ])
 
-    result = Solution().mergeKLists(example_input)
-    assert expected_output == result
+    result = Solution().merge_k_lists(example_input)
+    assert str(expected_output) == str(result)
