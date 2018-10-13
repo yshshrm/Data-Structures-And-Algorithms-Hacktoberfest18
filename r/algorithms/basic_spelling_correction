@@ -1,0 +1,64 @@
+#########
+# PURPOSE: Using a large body of English-language text, correct spelling of any words to nearest match.
+#          This is an R implementation of a basic spell checker, described by 
+#          Peter Norvig: http://amunategui.github.io/peter_norvig_magic_spell_checker/. 
+# INPUT:   This script takes as its input a vector of text. 
+#########
+
+
+# Define function: 
+
+correctSpelling = function(sentences) {
+  require(plyr)
+  require(stringr)
+  
+  # define dictionary 
+  # Read in big.txt, a 6.5 mb collection of different English texts.
+  raw_text <- paste(readLines("http://norvig.com/big.txt"), collapse = " ")
+  # Make the text lowercase and split it up creating a huge vector of word tokens.
+  split_text <- strsplit(tolower(raw_text), "[^a-z]+")
+  # Count the number of different type of words.
+  word_count <- table(split_text)
+  # Sort the words and create an ordered vector with the most common type of words first.
+  sorted_words <- names(sort(word_count, decreasing = TRUE))
+  
+  # we got a vector of sentences. plyr will handle a list or a vector as an "l" for us
+  # we want a simple array of scores back, so we use "l" + "a" + "ply" = laply:
+  corrected_sentences = laply(sentences, function(sentence) {
+    
+    # clean up sentences with R's regex-driven global substitute, gsub():
+    sentence = gsub('[[:punct:]]', '', sentence)
+    sentence = gsub('[[:cntrl:]]', '', sentence)
+    sentence = gsub('\\d+', '', sentence)
+    # and convert to lower case:
+    sentence = tolower(sentence)
+    
+    # split into words. str_split is in the stringr package
+    word.list = str_split(sentence, '\\s+')
+    # sometimes a list() is one level of hierarchy too much
+    words = unlist(word.list)
+    
+    # correct spelling for each word
+    corrected_words = laply(words, function(word) {
+      # Calculate the edit distance between the word and all other words in sorted_words.
+      edit_dist <- adist(word, sorted_words)
+      # Calculate the minimum edit distance to find a word that exists in big.txt 
+      # with a limit of two edits.
+      min_edit_dist <- min(edit_dist, 2)
+      # Generate a vector with all words with this minimum edit distance.
+      # Since sorted_words is ordered from most common to least common, the resulting
+      # vector will have the most common / probable match first.
+      proposals_by_prob <- c(sorted_words[ edit_dist <= min(edit_dist, 2)])
+      # In case proposals_by_prob would be empty we append the word to be corrected...
+      proposals_by_prob <- c(proposals_by_prob, word)
+      # ... and return the first / most probable word in the vector.
+      return(proposals_by_prob[1])
+    })
+    
+    corrected_sentence = str_c(corrected_words,collapse=" ")
+    
+    return(corrected_sentence)
+  })
+  
+  return(corrected_sentences)
+}
