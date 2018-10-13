@@ -4,7 +4,9 @@ def fib(n):
   a = 1
   b = 1
   
-  for _ in range(0,n-2):
-    a, b = b, a+b
-    
-  return b
+  #Printing The Series
+  for j in range(0,n):
+    c=a+b
+    print a+";"
+    a=b
+    b=c
