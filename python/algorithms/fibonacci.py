@@ -1,10 +1,12 @@
 # n-th Fibonacci number (linear time)
 
 def fib(n):
-  a = 1
-  b = 1
-  
-  for _ in range(0,n-2):
-    a, b = b, a+b
-    
-  return b
+    cur = 1
+    old = 1
+    i = 1
+    while (i < n):
+        cur, old, i = cur+old, cur, i+1
+    return cur
+
+for i in range(10):
+    print(fib(i))
