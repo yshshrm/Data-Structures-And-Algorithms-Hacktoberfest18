@@ -1,5 +1,0 @@
-#lang racket
-
-(define (push elem lst) (
-                         (append lst (list elem))
-                         ))
