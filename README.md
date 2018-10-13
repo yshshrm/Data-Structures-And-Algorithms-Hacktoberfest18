@@ -1,3 +1,11 @@
+## Table of Contents
+    
+
+* [Data Structures and Algorithms](#data-structures-and-algorithms)
+* [About](#about)
+* [Contributing Guidelines](#contributing-guidelines)
+* [How to make PR](#how-to-make-pr)
+
 # Data Structures and Algorithms
 For Hacktoberfest 2018! <br/>
 
