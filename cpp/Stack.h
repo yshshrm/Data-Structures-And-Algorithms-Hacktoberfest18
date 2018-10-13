@@ -1,0 +1,254 @@
+#pragma once
+#include <string>
+using namespace std;
+class myException
+{
+public:
+	myException()
+	{
+		message = "Data structure is broken, verify integerity";
+	}
+
+	myException(string str)
+	{
+		message = str;
+	}
+
+	string what()
+	{
+		return message;
+	}
+
+protected:
+	string message;
+
+private:
+
+};
+
+
+
+template <class datatype>
+class llNode
+{
+public:
+	datatype datavalue;
+	llNode *Next;
+};
+
+
+template <class datatype>
+class Stack
+{
+public:
+
+	Stack();
+	bool isEmptyStack();
+	void Push(datatype data);
+	datatype Top();
+	void Pop();
+	int stackCount();
+
+
+private:
+	llNode<datatype> *head,
+		*last,
+		*current;
+
+	int stackRecursive(llNode<datatype> *pos);
+
+};
+
+
+////////////////////////////////////////////////////////////////////////////////CONSTRUCTOR/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template <class datatype>
+Stack<datatype>::Stack()
+{
+	head = NULL;
+	last = NULL;
+	current = NULL;
+
+
+}
+////////////////////////////////////////////////////////////////////////////END CONSTRUCTOR/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+///////////////////////////////////////////////////////////////////////////IS EMPTY STACK //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template <class datatype>
+bool Stack<datatype>::isEmptyStack()
+{
+	bool temp = false;
+	if (head == NULL)
+	{
+		temp = true;
+	}
+	return temp;
+
+}
+///////////////////////////////////////////////////////////////////////END IS EMPTY STACK //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+///////////////////////////////////////////////////////////////////////PUSH/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template <class datatype>
+void Stack<datatype>::Push(datatype data)
+{
+	try
+	{
+		if (!isEmptyStack())
+		{
+			llNode<datatype> *temp;
+			temp = new llNode<datatype>;
+			temp->datavalue = data;
+			temp->Next = NULL;
+			if (head == NULL)
+			{
+				last = temp;
+				head = temp;
+			}
+			else
+			{
+				last->Next = temp;
+				last = temp;
+			}
+		}
+
+		if (isEmptyStack())
+		{
+
+			llNode<datatype> *temp; // Create temp
+			temp = new llNode<datatype>; // Create new node
+			temp->datavalue = data; // Add data to the new node
+			temp->Next = head;
+
+			if (head == NULL)
+			{
+				last = temp;
+			}
+
+			head = temp;
+		}
+
+
+	}
+	catch (myException e)
+	{
+		cout << e.what();
+	}
+}
+///////////////////////////////////////////////////////////////////END PUSH/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////////////////////////////POP////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template <class datatype>
+void Stack<datatype>::Pop()
+{
+	try
+	{
+
+		if (isEmptyStack())
+		{
+			throw(myException("Error, The stack is empty there is nothing to remove..."));
+		}
+
+		if (!isEmptyStack())
+		{
+			llNode<datatype> *temp, *pos;
+
+			try
+			{
+				if (head == NULL || last == NULL)
+				{
+					throw myException("ERROR: The list is empty, or pointer to last error");
+				}
+
+				if (head == last)
+				{
+					last = NULL;
+					temp = head;
+					head = NULL;
+					delete temp;
+				}
+
+				else
+				{
+					pos = head;
+					while (pos->Next->Next != NULL)
+					{
+						pos = pos->Next;
+					}
+
+					temp = pos->Next;
+					pos->Next = NULL;
+					last = pos;
+					delete temp;
+				}
+			}
+			catch (myException me)
+			{
+				cout << me.what() << endl;
+			}
+		}
+	}
+	catch (myException e)
+	{
+		cout << e.what() << endl;
+	}
+
+}
+/////////////////////////////////////////////////////////////////END POP////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+///////////////////////////////////////////////////////////////////////TOP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template <class datatype>
+datatype Stack<datatype>::Top()
+{
+	try
+	{
+		if (!isEmptyStack())
+		{
+			return returnEnd();
+		}
+
+		if (isEmptyStack())
+		{
+
+			throw(myException("\nError, There is nothing left in the stack to remove"));
+		}
+	}
+	catch (myException e)
+	{
+		cout << e.what() << endl;
+	}
+}
+///////////////////////////////////////////////////////////////////END TOP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////STACK COUNT///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class Datatype>
+int Stack<Datatype>::stackRecursive(llNode<Datatype> *pos)
+{
+	int counter = 0;
+	if (pos != NULL)
+	{
+		return  counter = stackRecursive(pos->Next) + 1;
+	}
+	else
+		return 0;
+}
+
+
+template <class datatype>
+int Stack<datatype>::stackCount()
+{
+	return stackRecursive(head);
+}
