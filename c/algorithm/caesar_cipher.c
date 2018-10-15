@@ -10,17 +10,17 @@ int main() {
     printf("Enter shift position: ");
     scanf("%d", &shift);
     
-    //shift = shift % 26;
+    shift = shift % 26;
     
     for(int i = 0; s[i] != '\0'; ++i){
         p = s[i];
         
         if(p >= 'a' && p <= 'z'){
-            /*p = p + shift;
+            p = p + shift;
             
             if(p > 'z'){
                 p = p - 'z' + 'a' - 1;
-            }*/
+            }
             p = (p + shift) % 26;
             s[i] = p;
         }
