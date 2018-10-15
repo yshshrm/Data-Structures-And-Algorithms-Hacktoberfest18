@@ -1,44 +1,32 @@
-var array_length;
+const heapSort = (arr) => {
+	const n = arr.length;
 
-function heap_root(input, i) {
-   var left = 2 * i + 1;
-   var right = 2 * i + 2;
-   var max = i;
+	for (let i = (n/2 - 1); i >= 0; i--) 
+		heapify(arr, n, i);
 
-   if (left < array_length && input[left] > input[max]) {
-       max = left;
-   }
+	for (let i = n-1; i >= 0; i--) {
+		let swap = arr[0];
+		arr[0] = arr[i];
+		arr[i] = swap;
+		heapify(arr, i, 0)
+	}
 
-   if (right < array_length && input[right] > input[max])     {
-       max = right;
-   }
-
-   if (max != i) {
-       swap(input, i, max);
-       heap_root(input, max);
-   }
+	return arr;
 }
 
-function swap(input, index_A, index_B) {
-   var temp = input[index_A];
+const heapify = (arr, n, i) => {
+	let largest = i, l = 2*i + 1, r = 2*i + 2;
 
-   input[index_A] = input[index_B];
-   input[index_B] = temp;
-}
+	if(l < n && arr[l] > arr[largest]) 
+		largest = l;
 
-function heapSort(input) {
+	if(r < n && arr[r] > arr[largest]) 
+		largest = r;
 
-   array_length = input.length;
-
-   for (var i = Math.floor(array_length / 2); i >= 0; i -= 1)      {
-       heap_root(input, i);
-     }
-
-   for (i = input.length - 1; i > 0; i--) {
-       swap(input, 0, i);
-       array_length--;
-
-
-       heap_root(input, 0);
-   }
+	if (largest != i) {
+		let swap = arr[i];
+		arr[i] = arr[largest];
+		arr[largest] = swap;
+		heapify(arr, n, largest);
+	}
 }
