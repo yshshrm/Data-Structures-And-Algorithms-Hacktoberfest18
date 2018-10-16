@@ -1,0 +1,48 @@
+ISort: THEORY
+      BEGIN
+
+sorted?(l:list[nat]) : RECURSIVE boolean =
+	   CASES l OF
+	   	 null: TRUE,
+		 cons(h,tl): CASES tl OF
+		 	     null: TRUE,
+			     cons(hh,ttl): (h <= hh) AND sorted?(tl)
+			     ENDCASES
+	   ENDCASES
+	   MEASURE length(l)
+
+ex1: LEMMA sorted?(cons(1,cons(2,null)))
+ex2: LEMMA FORALL (x:nat):
+     sorted?(cons(x,cons(x+1,null)))
+
+headTail: LEMMA
+	  FORALL (l:list[nat]):
+	  	 NOT(l = null) IMPLIES
+		       EXISTS (h:nat) (tl: list[nat]): l = cons(h,tl)
+
+sorted_without_head_is_sorted: LEMMA
+			       forall (x:nat) (l:list[nat]):
+			       	      sorted?(cons(x,l)) IMPLIES sorted?(l)
+
+insert(x:nat,l:list[nat]) : RECURSIVE list[nat] =
+			  CASES l OF
+			  	null: cons(x,null),
+				cons(h,tl): IF x <= h
+					    THEN cons(x,l)
+					    	 ELSE cons(h,insert(x,tl))
+						 ENDIF
+						 ENDCASES
+						 MEASURE length(l)
+
+insert_preserves_sorting: LEMMA
+			  FORALL (x:nat) (l:list[nat]):
+			  	 sorted?(l) IMPLIES sorted?(insert(x,l))
+
+isort(l:list[nat]) : RECURSIVE list[nat] =
+		   CASES l OF
+		   null: l,
+		   cons(h,tl): insert(h, isort(tl))
+		   ENDCASES
+		   MEASURE length(l)
+
+END ISort
