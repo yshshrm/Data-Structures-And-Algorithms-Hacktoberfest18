@@ -1,0 +1,30 @@
+Public Shared Sub InsertionSort(ByRef data As Integer())
+	For i As Integer = 1 To data.Length - 1
+		Dim j As Integer = i
+
+		While (j > 0)
+			If data(j - 1) > data(j) Then
+				data(j - 1) = data(j - 1) Xor data(j)
+				data(j) = data(j) Xor data(j - 1)
+				data(j - 1) = data(j - 1) Xor data(j)
+
+				j -= 1
+			Else
+				Exit While
+			End If
+		End While
+	Next
+End Sub
+
+'Example
+Dim data() As Integer = { -1, 25, -58964, 8547, -119, 0, 78596 }
+InsertionSort(data)
+
+'Output
+-58964
+-119
+-1
+0
+25
+8547
+78596

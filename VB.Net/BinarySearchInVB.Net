@@ -1,0 +1,29 @@
+'Binary Search
+Public Shared Function BinarySearch(data As Integer(), value As Integer) As Integer
+	Dim low As Integer = 0, high As Integer = data.Length - 1, midpoint As Integer = 0
+
+	While low <= high
+		midpoint = low + (high - low) \ 2
+
+		If value = data(midpoint) Then
+			Return midpoint
+		ElseIf value < data(midpoint) Then
+			high = midpoint - 1
+		Else
+			low = midpoint + 1
+		End If
+	End While
+
+	Return -1
+End Function
+
+'Example
+Dim data As Integer() = New Integer(9) {}
+For i As Integer = 0 To 9
+    data(i) = i * 10
+Next
+
+Dim value = BinarySearch(data, 60)
+
+'Out put
+6
