@@ -4,7 +4,7 @@
 using namespace std;
 int binsearch(int arr[],int ele,int beg,int end){
 	if(end>=beg){
-		int mid=(beg+end)/2;
+		int mid=beg+(end-beg)/2;
 		if(arr[mid]==ele)
 			return mid;
 		else if(arr[mid]<ele)

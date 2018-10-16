@@ -34,7 +34,7 @@ func main() {
 	// the left or right side depending on the value and then continue
 	// to halve until the result has been found.
 	for left <= right {
-		mid := (left + right) / 2
+		mid := left + (right - left) / 2
 
 		if arr[mid] == searchValue {
 			fmt.Println("Found at position: ", mid)
