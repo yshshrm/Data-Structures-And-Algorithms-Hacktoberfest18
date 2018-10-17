@@ -1,0 +1,31 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    int n,tp=0,ts=0; 
+    scanf("%d",&n);
+    int a[n][n];
+    for(int i = 0; i < n; i++)
+	{
+       for(int j = 0; j < n; j++)
+	   {
+          scanf("%d",&a[i][j]);
+		  if(i==j)
+		  {
+			  tp+=a[i][j];
+		  }
+			if(i==(n-1)-j)
+			{
+				ts+=a[i][j];
+			}
+       }
+    }
+	int at=tp-ts;
+	printf("%d",abs(at));
+    return 0;
+}
