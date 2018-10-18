@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner dataIn = new Scanner(System.in);
+        int W = dataIn.nextInt();
+        int H = dataIn.nextInt();
+        int x = dataIn.nextInt();
+        int y = dataIn.nextInt();
+        int r = dataIn.nextInt();
+        int x1 = x - r;
+        int x2 = x + r;
+        int y1 = y - r;
+        int y2 = y + r;
+        if(x1 >= 0 && y1 >= 0 && x2 <= W && y2 <= H){
+            System.out.println("Yes");
+        }else{
+            System.out.println("No");
+        }
+    }
+}
