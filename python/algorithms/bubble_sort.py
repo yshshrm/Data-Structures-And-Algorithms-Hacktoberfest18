@@ -1,13 +1,23 @@
-
-def bubble_sort(ls):
-    for i in range(0, len(ls) - 1):
-        for j in range(0, len(ls) - 1 - i):
-            if ls[j] > ls[j + 1]:
-                tmp = ls[j]
-                ls[j] = ls[j + 1]
-                ls[j + 1] = tmp
-
-if __name__ == '__main__':
-    arr = [2, 4, 5, 7, 8, 10]
-    bubble_sort(arr)
-    print(arr)
+def Sorting(arr): 
+    n = len(arr) 
+  
+    # Traverse through all array elements 
+    for i in range(n): 
+  
+        # Last i elements are already in place 
+        for j in range(0, n-i-1): 
+  
+            # traverse the array from 0 to n-i-1 
+            # Swap if the element found is greater 
+            # than the next element 
+            if arr[j] > arr[j+1] : 
+                arr[j], arr[j+1] = arr[j+1], arr[j] 
+  
+# Driver code to test above 
+arr = [64, 34, 25, 12, 22, 11, 90] 
+  
+Sorting(arr) 
+  
+print ("Sorted array is:") 
+for i in range(len(arr)): 
+    print ("%d" %arr[i]),
