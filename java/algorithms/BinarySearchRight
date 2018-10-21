@@ -1,0 +1,36 @@
+// Binary Search which will return the right most occurrence of  an element in the array
+public class BinarySearchRight {
+
+	static int binarySearchRight( int array[], int value, int low, int high ) {
+		
+		  if(low<=high)
+		  {
+			  int mid=(low+high)/2;
+			  if(value<array[mid])
+			  {
+				  return binarySearchRight(array,value,low,mid-1);
+			  }
+			  else
+			  {
+				return binarySearchRight(array,value,mid+1,high);  
+			  }
+		  }
+		  if(array[high]==value)
+		  {
+			  return high;
+		  }
+		  else
+		  {
+			return -1;
+		  }
+		  
+		}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int array[]= {1,1,1,1,2,2,2,3,3,3,3,3};
+		int value=2;
+		System.out.println("Value "+value+"'s right most occurence in array is at position "+(binarySearchRight(array,value,0,array.length-1)+1));
+	}
+
+}
