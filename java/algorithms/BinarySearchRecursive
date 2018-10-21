@@ -1,0 +1,30 @@
+public class BinarySearchRecursive {
+
+	static int binarySearch(int array[], int value, int low, int high) {
+
+		if (low > high) {
+			return -1;
+		}
+		int mid = (low + high) / 2;
+	
+		if (array[mid] == value) {
+			return mid;
+		} else if (value > array[mid]) {
+		
+			return binarySearch(array, value, mid + 1, high);
+		} else {
+		
+			return binarySearch(array, value, low, mid - 1);
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int array[]= {1,2,3,4,5,6,7,8,9,10};
+		int value=1;
+		System.out.println("Value "+value+" present in array at position "+(binarySearch(array,value,0,array.length-1)+1));
+
+	}
+
+}
