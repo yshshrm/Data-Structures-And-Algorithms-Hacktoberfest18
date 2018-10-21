@@ -35,7 +35,7 @@ def build_max_heap (A):
         
     return heap_size
        
-        
+       
 def heap_sort (A):
     heap_size = build_max_heap(A)
     for i in range(len(A) - 1, 0, -1):
@@ -43,7 +43,7 @@ def heap_sort (A):
         heap_size = heap_size - 1;
         max_heapify(A, 0, heap_size)
 
-
+#Driver code to test the sort 
 A = [9,8,7,6,5,4,3,2,1]
 print("Before Sorting")
 print(A)  
