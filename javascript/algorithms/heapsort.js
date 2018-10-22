@@ -20,10 +20,9 @@ function heap_root(input, i) {
 }
 
 function swap(input, index_A, index_B) {
-   var temp = input[index_A];
-
-   input[index_A] = input[index_B];
-   input[index_B] = temp;
+   input[index_A] = input[index_A] + input[index_B];
+   input[index_B] = input[index_A] - input[index_B];
+   input[index_A] = input[index_A] - input[index_B];
 }
 
 function heapSort(input) {
