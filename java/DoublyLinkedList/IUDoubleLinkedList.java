@@ -26,7 +26,6 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public void addToFront(T element) {
-        // TODO
     	LinearNode<T> firstNewNode = new LinearNode<T>(element);
     	
     	if(isEmpty()){
@@ -52,7 +51,7 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public void addToRear(T element) {
-        // TODO
+       
     	LinearNode<T> newLastNode = new LinearNode<T>(element);
     	if(isEmpty()){
     		head = newLastNode;
@@ -69,13 +68,13 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public void add(T element) {
-        // TODO
+        
     	addToRear(element);
     }
 
     @Override
     public void addAfter(T element, T target) {
-        // TODO
+        
     	LinearNode<T> newNode = new LinearNode<T>(element);
     	LinearNode<T> prevNode = null;
     	LinearNode<T> targetNode = head;
@@ -108,7 +107,7 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public void add(int index, T element) {
-        // TODO
+        
     	if(index < 0 || index > size){
     		throw new IndexOutOfBoundsException();
     	}
@@ -132,7 +131,7 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public T removeFirst() {
-        // TODO
+        
     	if (isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -154,7 +153,7 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public T removeLast() {
-        // TODO
+        
     	if (isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -220,7 +219,7 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public T remove(int index) {
-        // TODO
+        
     	if(index < 0 || index > size-1){
     		throw new IndexOutOfBoundsException();
     	}
@@ -263,7 +262,7 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public void set(int index, T element) {
-        // TODO
+        
     	if(index < 0 || index > size-1){
     		throw new IndexOutOfBoundsException();
     	}
@@ -281,7 +280,7 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public T get(int index) {
-        // TODO
+        
     	if(index < 0 || index > size-1){
     		throw new IndexOutOfBoundsException();
     	}
@@ -297,7 +296,7 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public int indexOf(T element) {
-        // TODO
+        
     	int returnIndex = -1;
     	LinearNode<T> current = head;
     	int currentIndex = 0;
@@ -313,21 +312,19 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public T first() {
-        // TODO
+        
     	if (size == 0) throw new NoSuchElementException();
     	else return head.getElement(); 
     }
 
     @Override
     public T last() {
-        // TODO
     	if (size == 0) throw new NoSuchElementException();
     	else return tail.getElement(); 
     }
 
     @Override
     public boolean contains(T target) {
-        // TODO
     	
     	if(isEmpty()){
     		return false;
@@ -349,14 +346,12 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
     @Override
     public boolean isEmpty() {
-        // TODO
         if(size == 0) return true;
         else return false;
     }
 
     @Override
     public int size() {
-        // TODO
         return size;
     }
 
@@ -415,7 +410,6 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
         
         @Override
         public boolean hasNext() {
-            // TODO
         	modCheck();
         	if(isEmpty()){
         		return false;
@@ -428,7 +422,6 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
         @Override
         public T next() {
-            // TODO
         	modCheck();
 			if(hasNext() == true){
 				prevNode = nextNode;
@@ -445,7 +438,6 @@ public class IUDoubleLinkedList<T> implements IndexedUnsortedList<T> {
 
         @Override
         public void remove() {
-            // TODO
         	modCheck();
 
         	if(lastReturned == null){
