@@ -1,4 +1,3 @@
-import sys
 
 def convertToBinary(integer):
     if integer == 0:
