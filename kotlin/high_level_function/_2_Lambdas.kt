@@ -9,6 +9,9 @@ fun main(args: Array<String>) {
     acceptLambda({ s, i -> s + i })
     //Another syntax
     acceptLambda(){ s, i -> s + i }
+    
+    //Another syntax
+    acceptLambda{ s, i -> s + i }
 }
 
 fun acceptLambda(lamdaFun: (String, Int) -> String) = println(lamdaFun("Hello", 55))
