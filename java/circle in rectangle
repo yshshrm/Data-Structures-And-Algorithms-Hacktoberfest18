@@ -11,11 +11,11 @@ public class Main {
         int x1 = x - r;
         int x2 = x + r;
         int y1 = y - r;
-        int y2 = y + r;
-        if(x1 >= 0 && y1 >= 0 && x2 <= W && y2 <= H){
-            System.out.println("Yes");
-        }else{
-            System.out.println("No");
-        }
+        int y2 = y + r;    
+        System.out.println(
+            if(x1 >= 0 && y1 >= 0 && x2 <= W && y2 <= H) "Yes"
+            else "NO"
+        );
+       
     }
 }
