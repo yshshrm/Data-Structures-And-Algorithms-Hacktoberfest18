@@ -1,4 +1,5 @@
-// Programme t megr K-sorted Arrays
+// Programme to megre K-sorted Arrays
+// Time Complexity: O(k*n)
 
 #include <bits/stdc++.h>
 using namespace std;
