@@ -69,3 +69,6 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+python/algorithms/Kadane.py
+cpp/algorithms/Quick_sort.cpp
+python/algorithms/Kadane.py
