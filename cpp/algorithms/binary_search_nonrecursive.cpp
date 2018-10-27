@@ -15,7 +15,7 @@ int main()
 
 	while(f<=l)	//Will run till 1 element left
 	{
-		m = (f+l)/2;
+		m =f+(l-f)/2;//due to integer overflow
 		if(e==arr[m])
 		{
 			cout<<"Element found at index "<<m<<endl;
