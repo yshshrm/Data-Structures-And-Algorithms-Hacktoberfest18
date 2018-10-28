@@ -14,16 +14,16 @@ Below is an example:-
 ```cpp
    #include <cstdlib>
    #include<iostream>
-    using namespace std;
+   using namespace std;
      
-    int main() {
+   int main() {
     cout<<rand()<<endl;
     cout<<rand()<<endl;
     cout<<rand()<<endl;
-    	return 0;
-    }
+    return 0;
+   }
         
- Output:- (Note that the output is random and will differ from what is mentioned here)
+Output:- (Note that the output is random and will differ from what is mentioned here)
 1804289383
 846930886
 1681692777
@@ -68,7 +68,7 @@ Code snippet:
 srand(time(NULL));
 cout << rand();
 
-Output: (Will differ from computer to computer, and because of the seed, will also differ from time to time, literally. :D)
+Output: (Will differ with platform and obviously time. :D)
 1696269016
 
 ```
