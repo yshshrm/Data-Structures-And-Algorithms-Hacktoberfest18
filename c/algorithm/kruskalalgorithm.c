@@ -28,7 +28,7 @@ void main()
 {
     int i,j,total_cost;
     
-    printf("\nEnter number of vertices:");
+    printf("\nEnter number of vertices :");
     
     scanf("%d",&n);
     
