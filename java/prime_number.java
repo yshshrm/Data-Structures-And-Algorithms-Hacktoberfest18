@@ -9,9 +9,13 @@ public class Prime
         {  
           System.out.println(n+" is not prime number");      
         }
+        else if (n==2)
+        {
+            System.out.println(n+" is prime number");
+        }
         else
         {  
-          for(i=2;i<=m;i++)
+          for(i=3;i<=m;i+=2)
           {      
             if(n%i==0)
             {      
