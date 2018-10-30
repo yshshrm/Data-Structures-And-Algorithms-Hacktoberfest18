@@ -17,7 +17,7 @@
 
 # Wellington Avelino
 
-def solution(n)
+def sibling_numbers?(n)
   siblings = n.to_s.chars.each_slice(1).to_a
   siblings.sort {|x,y| -(x <=> y)}.join.to_i
 end
