@@ -19,7 +19,7 @@ void identity(Matrix* a)
 
     if(a->n != a->m)
     {
-        fprintf(stderr,"Matrix is not  a square matrix!");
+        fprintf(stderr,"Matrix is not  a square matrix!\n");
         return;
     }
     zero(a);
@@ -46,7 +46,7 @@ void multiply(Matrix* a,Matrix* b)
 {
     if(a->m != b->n)
     {
-        fprintf(stderr,"Can't multiply matrices!");
+        fprintf(stderr,"Can't multiply matrices!\n");
         return;
     }
     Matrix c;
@@ -72,7 +72,7 @@ void lgexp(Matrix* a,int b)
 {
     if(a->n != a->m)
     {
-        fprintf(stderr,"Matrix is not  a square matrix!");
+        fprintf(stderr,"Matrix is not  a square matrix!\n");
         return;
     }
     if(b==0)
