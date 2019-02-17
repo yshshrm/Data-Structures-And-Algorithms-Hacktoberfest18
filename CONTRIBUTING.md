@@ -10,4 +10,4 @@ Install Git:
 4. After modifying existing files or adding new files to the project, add them locally to your repository using $ gid add -A command where A is the file
 5. Add a short message about what you contributed for with the git commit command. For eg. $ git commit -m "Fixed documentation typos"
 6. Now use the command $ git push --set-upstream origin new-branch to push the changes to the current branch of your forked repository
-7. Now you can create a Pull Request with the chosen branch as new-branch
+7. Now you can create a Pull Request with in the chosen branch as new-branch
