@@ -4,21 +4,12 @@
 using namespace std; 
 #define RANGE 255 
 
-// The main function that sort 
-// the given string arr[] in 
-// alphabatical order 
 void countSort(char arr[]) 
 { 
-	// The output character array 
-	// that will have sorted arr 
 	char output[strlen(arr)]; 
-
-	// Create a count array to store count of inidividul 
-	// characters and initialize count array as 0 
 	int count[RANGE + 1], i; 
 	memset(count, 0, sizeof(count)); 
 
-	// Store count of each character 
 	for(i = 0; arr[i]; ++i) 
 		++count[arr[i]]; 
 
