@@ -20,4 +20,4 @@ This Repo consists of data-structures and algorithms sorted by programming langu
 3. Make Pull Request to master and enjoy.
 
 Hack on!
-God Speed
+God Speed!
