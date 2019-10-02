@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 vector<int> slidingMaximum(vector<int> &A, int B) 
 {
     int n=A.size();
