@@ -1,22 +1,28 @@
 #include<iostream>
 #include<cstdlib>
 using namespace std;
+//structure of a single node of linked list
 struct Node
 {
     int INFO;
     struct Node * NEXT, * PREV;
 };
+//function to create initial nodes in a linked list
 void Create_Node(struct Node ** START,struct Node ** END,int n)
 {
-    int inf,i;
+    int inf,i,x;
     struct Node * temp, * new_node;
     *START=*END=NULL;
     if(n<=0)
+    {
         cout<<"No elements to be inserted in the list!";
+        goto x;
+    }
     *START=(struct Node *)malloc(sizeof(struct Node));
     if(*START==NULL)
     {
         cout<<"Memory can not be allocated!";
+        goto x;
     }
     else
     {
@@ -44,7 +50,9 @@ void Create_Node(struct Node ** START,struct Node ** END,int n)
             temp=new_node;
         }
     }
+    x:
 }
+//function to traverse the linked list from start to end
 void Traverse(struct Node * START,struct Node * END)
 {
     struct Node * temp=START;
@@ -55,6 +63,7 @@ void Traverse(struct Node * START,struct Node * END)
     }
     cout<<temp->INFO;
 }
+//function to traverse the linked list from end to start (reverse)
 void Traverse_Reverse(struct Node * START,struct Node * END)
 {
     struct Node * temp=END;
