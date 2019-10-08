@@ -18,7 +18,16 @@ function reverseStringRecursion(str) {
     }
 }
 
+function reverseStringLoop(str){
+    let result = "";
+    for(let i = str.length - 1; i >= 0; i--){
+      result += str[i];
+    }
+    return result;
+}
+
 var word = "ocean";
 console.log(reverse(word));
 console.log(reverseString(word));
 console.log(reverseStringRecursion(word));
+console.log(reverseStringLoop(word));
