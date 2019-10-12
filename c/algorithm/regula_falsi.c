@@ -10,6 +10,7 @@ Lab - Numerical Methods Lab - 2
 
 int itr=0;
 
+//Function to find roots of
 float func (float x)
 {
     return (x*x - 10);
