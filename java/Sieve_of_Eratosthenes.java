@@ -28,7 +28,7 @@ public class Sieve_of_Eratosthenes {
 		// Fill all the indices with true value initially
 		Arrays.fill(primes, true);
 
-		// In the array primes[] the value 2 and 3 are prime so mark there places as
+		// The values 0 and 1 are not primes so mark their places as
 		// false
 		primes[0] = false;
 		primes[1] = false;
