@@ -1,4 +1,4 @@
-package Recursioncontd;
+
 
 public class PrintPemutations {
 
@@ -12,7 +12,7 @@ public class PrintPemutations {
 
 	}
 	
-public static void PrintPermutations2(String str, String asf) {
+        public static void PrintPermutations2(String str, String asf) {
 		
 		if(str.length()==0) {
 			System.out.println(asf);
@@ -63,7 +63,7 @@ public static void PrintPermutations2(String str, String asf) {
 	
 	
 	
-public static void PrintPermutations2SB(StringBuilder s1, StringBuilder s2) {
+        public static void PrintPermutations2SB(StringBuilder s1, StringBuilder s2) {
 		
 		if(s1.length() ==0) {
 			System.out.println(s2);
