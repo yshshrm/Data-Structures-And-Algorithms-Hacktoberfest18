@@ -129,10 +129,9 @@ int main(){
     if(root == NULL)
     {
       root=newnode;
-    //  cout << root -> data<< "A" << endl;
-		return root;
+      return root;
     }
-   // BinaryTreeNode<int>* currnode;
+   
     
     if(input > root->data)
       root->right = insert(root->right,input);
