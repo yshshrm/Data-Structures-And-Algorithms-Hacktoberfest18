@@ -1,15 +1,16 @@
- #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 #include<string.h>
 #define INF 1000000000
+#define ll long long
 using namespace std;
-long long int max[1000000],min[1000000];
+ll max[1000000],min[1000000];
 
-void convertMINH(long long int a[],long long int i, long long int n)
+void convertMINH(ll a[],ll i, ll n)
     {
-        long long int l= 2*i+1;
-        long long int r= 2*i+2;
+        ll l= 2*i+1;
+        ll r= 2*i+2;
 
-        long long int small = i;
+        ll small = i;
         if (l<n && a[l]<a[small])
          {
             small= l;
@@ -25,20 +26,20 @@ void convertMINH(long long int a[],long long int i, long long int n)
         }
     }
 
- void MinH(long long int a[] , long long int n)
+ void MinH(ll a[] , ll n)
   {
-      long long int ht1 = (n - 1) / 2;
-        for (long long int i = ht1; i >= 0; i--) 
+      ll ht1 = (n - 1) / 2;
+        for (ll i = ht1; i >= 0; i--) 
         {
             convertMINH(a, i, n);
         }
     }
 
-void convertMAXH(long long int a[], long long int i,long long int n) 
+void convertMAXH(ll a[], ll i,ll n) 
 {
-        long long int l= 2*i+1;
-        long long int r= 2*i+2;
-        long long int largest = i;
+        ll l= 2*i+1;
+        ll r= 2*i+2;
+        ll largest = i;
 
         if (l<n && a[l]> a[largest]) 
         {
@@ -56,10 +57,10 @@ void convertMAXH(long long int a[], long long int i,long long int n)
         }
     }
  
-void MaxH(long long int a[],long long int n) 
+void MaxH(ll a[],ll n) 
 {
-        long long int ht1 = (n - 1) / 2;
-        for (long long int i = ht1; i >= 0; i--) 
+        ll ht1 = (n - 1) / 2;
+        for (ll i = ht1; i >= 0; i--) 
         {
             convertMAXH(a, i, n);
         }
@@ -69,13 +70,13 @@ void MaxH(long long int a[],long long int n)
 int main()
 {
 
-long long int n;
+ll n;
 cin>>n;
-long long int a[n],max[n],min[n];
-long long int x1=0,x2=0;
+ll a[n],max[n],min[n];
+ll x1=0,x2=0;
 double mid=0;
     cout<<setprecision(1)<<fixed;
-for(long long int i=0;i<n;i++)
+for(ll i=0;i<n;i++)
 {
     cin>>a[i];
     if(a[i]<mid)
@@ -100,7 +101,7 @@ for(long long int i=0;i<n;i++)
     //cout<<a[i]<<" ";
 if((x1-x2)>1||(x2-x1)>1)
 {
-    long long int p,q,r,s;
+    ll p,q,r,s;
     
     if(x1>x2)
     {   
