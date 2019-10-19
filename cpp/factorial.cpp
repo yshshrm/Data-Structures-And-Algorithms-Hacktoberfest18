@@ -13,7 +13,17 @@ int fact(int n){
 	else
 		return f[n]=n*fact(n-1);
 }
-
+int f[1000]=0;
+f[0]=1;
+long long myFact(int num)
+{
+	if(num>=0)
+	{
+		for(int i=0;i<num;i++)
+			f[i]=i*f[i-1];
+	}
+	return f[num];
+}
 int main(){
 	cout<<fact(5);
 }
