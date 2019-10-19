@@ -1,6 +1,48 @@
 #include<iostream>
+#include<stack>
 #define stack_size 5
 using namespace std;
+
+class sq{
+    stack<int> s1;
+    stack<int> s2;
+    public:
+    void push()
+    {
+         while(!s1.empty())
+        {
+            s2.push(s1.top());
+            s1.pop();
+            
+        }
+        s2.push(x);
+        while(!s2.empty())
+        {
+            s1.push(s2.top());
+            s2.pop();
+        }
+    }
+    int pop()
+    {
+        if(s1.empty())
+        return -1;
+        int a=s1.top();
+        s1.pop();
+        return a;
+    }
+    void display()
+    {
+        while(!s1.empty())
+        {
+            cout<<s1.top()<<" ";
+            s1.pop();
+        }
+    }
+}
+
+
+
+
 struct Stack
 {
     int A[100];
