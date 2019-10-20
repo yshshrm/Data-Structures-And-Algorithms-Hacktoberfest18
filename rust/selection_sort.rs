@@ -3,14 +3,14 @@ fn selection_sort<T: Ord>(arr: &mut Vec<T>) {
 }
 
 fn _selection_sort<T: Ord>(arr: &mut Vec<T>, offset: usize) {
-    let mut smallest_index = offset;
+    let mut smallest_index = offset.clone();
     for i in (offset+1)..arr.len() {
         if arr[i] < arr[smallest_index] {
             smallest_index = i;
         }
     }
     if smallest_index != offset {
-        arr.swap(smallest_index, offset)
+        arr.swap(smallest_index, offset.clone())
     }
     if offset < arr.len() {
         _selection_sort(arr, offset + 1)
