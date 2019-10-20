@@ -1,5 +1,5 @@
 fn shell_sort<T: Ord>(arr: &mut [T]) {
-    let mut gap = (arr.len() / 2).clone();
+    let mut gap = arr.len() / 2;
     while gap > 0 {
         for i in gap..arr.len() {
             let mut j = i;
