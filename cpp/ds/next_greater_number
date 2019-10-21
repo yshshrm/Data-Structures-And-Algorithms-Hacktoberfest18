@@ -1,6 +1,7 @@
-#include<iostream>
-#include<cstring>
-#include<algorithm>
+//#include<iostream>
+//#include<cstring>
+//#include<algorithm>
+#include<bits/stdc++>
 using namespace std;
 
 void nextSmaller(char str[],int n){
