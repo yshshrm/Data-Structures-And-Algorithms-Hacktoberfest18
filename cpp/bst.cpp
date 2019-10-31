@@ -33,7 +33,7 @@ node* takeInput()
     node* root;
     int data;
     cin>>data;
-    while(data!=-1)
+    while(data!=-2)
     {
         root=insertinbst(root,data);
         cin>>data;
