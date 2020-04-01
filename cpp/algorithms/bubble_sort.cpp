@@ -19,7 +19,6 @@ void bubbleSort(int *array, int n)
 {
     bool swapped = true;
     int j = 0;
-    int temp;
 
     while (swapped)
     {
@@ -29,9 +28,9 @@ void bubbleSort(int *array, int n)
         {
             if (array[i] > array[i + 1])
             {
-                temp = array[i];
-                array[i] = array[i + 1];
-                array[i + 1] = temp;
+                array[i]=array[i]+array[i + 1];
+                array[i + 1]=array[i]-array[i + 1];
+                array[i]=array[i]-array[i + 1];
                 swapped = true;
             }
         }
