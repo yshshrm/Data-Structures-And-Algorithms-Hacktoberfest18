@@ -1,0 +1,928 @@
+
+//*****************************************************************************
+              	 	PROJECT      -> FASHION INSTITUTE
+                     PREPARED BY  ->SHIVAMCHOUDHARY
+                                        XII-C //*****************************************************************************
+
+
+//*****************************************************************************
+//	                     HEADER FILES INCLUDED
+//*****************************************************************************
+
+//THESE ARE INCLUDED HEADER FILES
+#include<fstream.h>
+#include<conio.h>
+#include<process.h>
+#include<string.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<iomanip.h>
+#include<dos.h>
+
+int s1,s2,b[6],z,k,i=0;    //GLOBAL VARIABLES
+void adm();                //GLOBAL FUNCTION
+
+
+//****************************************************************************
+//                THIS CLASS CONTAINS DATA ABOUT ADMISSION
+//****************************************************************************
+
+class admission
+{
+  private:
+	   char name[20],course[20];
+	   int serial_no,adm_no;
+  public:
+	   int draw_nos();
+	   int ad()
+	   {
+	     return serial_no;
+	   }
+	   void get();
+	   void put();
+	   int main_menu();
+}a1,a2;
+
+
+//****************************************************************************
+//  THIS CLASS CONTAINS DATA ABOUT ELIGIBILITY OF A STUDENT TO APPLY AT NIFT
+//****************************************************************************
+
+class verify
+{
+  private:
+	   int age1,age2,m4,m2,m3,k1,k2,k3,k4,k5;
+  public:
+	   void eligible();
+	   void bac_prog();
+	   void mas_prog();
+	   int b_design();
+	   int b_tech();
+	   int m_design();
+	   int m_tech();
+	   int m_man();
+}v1;
+
+
+//****************************************************************************
+//	    THIS CLASS CONTAINS FUNCTION ABOUT PROGRAMMES NIFT OFFERS
+//****************************************************************************
+
+class programme
+{
+  public:
+	   void d_prog();
+	   void t_prog();
+}p1;
+
+
+//*****************************************************************************
+//                     THIS CLASS CONTAINS DATA ABOUT NIFT
+//****************************************************************************
+
+class nift
+{
+  private:
+	   char x1,x2;
+	   double par_in;
+  public:
+	   void subsidy();
+	   void gen_cal();
+	   void intro();
+	   void know();
+	   void adm_test();
+}n1;
+
+
+//****************************************************************************
+//                 CLASS CONTAINING FUNCTIONS TO DO QUERRIES
+//****************************************************************************
+
+class querry
+{
+  private:
+	  char dep[5];
+  public:
+	  void display();
+	  void search();
+	  void mod();
+	  void del();
+	  void insert();
+}as;
+
+
+//****************************************************************************
+//                       FUNCTION TO INPUT INFORMATION
+//****************************************************************************
+
+void admission::get()
+{clrscr();
+adm_no=a1.draw_nos();
+cout<<"\n\n Your admission no.is :: "<<adm_no<<endl;
+cout<<"\n\n Enter your serial no  :: "<<endl;
+cin>>serial_no;
+cout<<"\n\n Enter your name :: "<<endl;
+gets(name);
+cout<<"\n\n Enter the course you want to opt :: (FD,TD) ::"<<endl;
+again:
+gets(course);
+if(!((strcmp(course,"FD")==0)||(strcmp(course,"TD")==0)))
+{
+cout<<"\nSorry !! You opted a wrong course"<<endl;
+cout<<"\n\nPlease !! Enter again, the course you wanna opt (FD,TD) :: "<<endl;
+goto again;     //JUMP STSTEMENT
+}
+}
+
+
+//****************************************************************************
+//     		          FUNCTION TO READ INFORMATION
+//****************************************************************************
+
+void admission::put()
+{
+clrscr();
+
+cout<<"\n\nAdmission No. :: "<<adm_no;
+cout<<"\n\nSerial No. :: "<<serial_no;
+cout<<"\n\nName :: "<<name;
+cout<<"\n\nCourse :: "<<course;
+
+}
+
+
+
+//****************************************************************************
+//                     FUNCTION TO TAKE ADMISSION AT NIFT
+//****************************************************************************
+
+void adm()
+{                         clrscr();
+ofstream fout;
+fout.open("file1.dat",ios::app|ios::binary);
+a1.get();
+fout.write((char*)&a1,sizeof(a1));
+fout.close();
+}
+
+
+//****************************************************************************
+//                        FUNCTION TO DISPLAY RECORDS
+//****************************************************************************
+
+void querry::display()
+{            clrscr();
+ifstream fin;
+fin.open("file1.dat",ios::binary);
+while(!fin.eof())
+{
+fin.read((char*)&a1,sizeof(a1));
+if(fin.eof())
+	break;
+a1.put();
+getch();
+}
+fin.close();
+}
+
+
+//****************************************************************************
+//                        FUNCTION TO MODIFY RECORDS
+//****************************************************************************
+
+void querry::mod()
+{           clrscr();
+int i;
+char found='n';
+ifstream fin;
+fin.open("file1.dat",ios::binary);
+ofstream fout;
+fout.open("folder1.dat",ios::binary);
+int n;
+cout<<"\n\nEnter the serial no of student whose record is to be modified :: "<<endl;
+cin>>n;
+while(!fin.eof())
+{
+fin.read((char*)&a1,sizeof a1);
+if(fin.eof())
+break;
+if(a1.ad()==n)
+{
+found='f';
+a1.put();
+getch();
+cout<<"\n\nEnter the new details of the student :: ";
+a2.get();
+fout.write((char*)&a2,sizeof a2);
+}
+else
+fout.write((char*)&a1,sizeof a1);
+}
+if(found=='n')
+cout<<"\n\nSORRY!! Student has no record at NIFT";
+fin.close();
+fout.close();
+remove("file1.dat");
+rename("folder1.dat","file1.dat");
+}
+
+
+//****************************************************************************
+//                       FUNCTION TO SEARCH RECORD
+//****************************************************************************
+
+void querry::search()
+{                                 clrscr();
+int rr;
+char found='n';
+cout<<"\n\nEnter the serial no. of student whose record you want to search :: ";
+cin>>rr;
+ifstream fin;
+fin.open("file1.dat",ios::binary);
+while(!fin.eof())
+{
+fin.read((char*)&a1,sizeof a1);
+if(fin.eof())
+break;
+if(a1.ad()==rr)
+{
+a1.put();
+found='f';
+}
+}
+if (found=='n')
+cout<<"\n\nSORRY!! Student has no record at NIFT";
+fin.close();
+}
+
+
+//****************************************************************************
+//                        FUNCTION TO DELETE RECORD
+//****************************************************************************
+
+void querry::del()
+{           clrscr();
+int r;
+char found='f',confirm;
+ifstream fin;
+fin.open("file1.dat",ios::binary);
+ofstream fout("ab1.dat",ios::binary);
+cout<<"\n\nEnter serial no. of student whose record you wanna delete :: ";
+cin>>r;
+cout<<"\n\nAlso enter the department which the student has opted(MP/BP)  ::  ";
+start:
+gets(dep);
+if((strcmp(dep,"BP"))==0)
+  --s1;
+else if((strcmp(dep,"MP"))==0)
+  --s2;
+else
+{
+cout<<"\n\nSorry!!!!! You entered a wrong department !";
+cout<<"\n\nPlease !! Again enter the department which the student has opted (MP/BP) :: ";
+goto start;          //JUMP STATEMENT
+}
+while(!fin.eof())
+{
+  fin.read((char*)&a1,sizeof a1);
+  if(fin.eof())
+    break;
+  if(a1.ad()==r)
+  {
+    found='t';
+    a1.put();
+    cout<<"\n\nAre you sure you wanna delete ? ";
+    cin>>confirm;
+    if((confirm=='n')||(confirm=='N'))
+    fout.write((char*)&a1,sizeof a1);
+  }
+  else
+  fout.write((char*)&a1,sizeof a1);
+}
+if(found=='f')
+cout<<"\n\nSORRY!! Student has no record at NIFT";
+fin.close();
+fout.close();
+remove("file1.dat");
+rename("ab1.dat","file1.dat");
+
+}
+
+
+//****************************************************************************
+//                        FUNCTION TO INSERT RECORD
+//****************************************************************************
+
+void querry::insert()
+{clrscr();
+int n;
+char ch,last='y';
+ifstream fin;
+fin.open("file1.dat",ios::binary);
+ofstream fout("folder1.dat",ios::binary);
+cout<<"\n\nEnter the  details of student whom you wanna insert in your section :: ";
+a2.get();
+cout<<"\nAlso enter the department which the student has opted(MP/BP) :: ";
+label:
+gets(dep);
+if((strcmp(dep,"BP"))==0)
+  ++s1;
+else if((strcmp(dep,"MP"))==0)
+  ++s2;
+else
+{
+ cout<<"\nSorry !! You entered a wrong department !!";
+ cout<<"\n\nPlease !! Again enter the department which the student has opted(MP/BP) :: ";
+ goto label;         //JUMP STATEMENT
+}
+while(!fin.eof())
+{
+  fin.read((char*)&a1,sizeof a1);
+  if(!fin)
+  break;
+  if(a2.ad()<=a1.ad())
+  {
+    fout.write((char*)&a2,sizeof a2);
+    fout.write((char*)&a1,sizeof a1);
+    last='n';
+    break;
+  }
+  else
+  fout.write((char*)&a1,sizeof a1);
+}
+if(last=='y')
+fout.write((char*)&a2,sizeof a2);
+else if(!fin.eof())
+{
+while(!fin.eof())
+{
+  fin.read((char*)&a1,sizeof a1);
+  if(fin.eof())
+  break;
+  fout.write((char*)&a1,sizeof a1);
+}
+}
+fout.close();
+fin.close();
+remove("file1.dat");
+rename("folder1.dat","file1.dat");
+
+}
+
+//****************************************************************************
+//                        FUNCION TO KNOW ABOUT SUBSIDY
+//****************************************************************************
+
+void nift::subsidy()
+{clrscr();
+cout<<"\nEnter your parental income ::";
+cin>>par_in;
+if(par_in<=100000)
+{
+  cout<<"\nYou will get 50% subsidy by NIFT";
+  cout<<"\nAmount of tuition fee to be paid by you per semester :: Rs.10000";
+}
+else if((par_in>100000)&&(par_in<=200000))
+{
+  cout<<"\nYou will get 30% subsidy";
+  cout<<"\nAmount of tuition fee to be paid by you per semester :: Rs.20000";
+}
+else if((par_in>200000)&&(par_in<=300000))
+{
+  cout<<"\nYou will get 25% subsidy by NIFT";
+  cout<<"\nAmount of tuition fee to be paid by you per semseter :: Rs.30000";
+}
+else
+ cout<<"\n\nSORRY!! You would not get any subsidy at NIFT";
+
+}
+
+//****************************************************************************
+//           THIS FUNCTION DISPLAYS MENU FOR PROGRAMMES NIFT OFFERS
+//****************************************************************************
+
+int prog_menu()
+{  clrscr();
+int q6;
+cout<<"\n^^^^^^^^^^^^Menu 11^^^^^^^^^^^";
+cout<<"\n----------------------------";
+cout<<"\n\nWanna see programmes at:"<<endl<<endl;
+cout<<"\n 	1. Design " <<endl<<endl;
+cout<<"\n	2. Technology" <<endl<<endl;
+cout<<"\n----------------------------";
+cout<<"\n\n		Enter your choice :: "<<endl<<endl;
+cin>>q6;
+return q6;
+}
+
+//****************************************************************************
+//           THIS FUNCTION DISPALYS MENU FOR KNOWING MORE ABOUT NIFT
+//****************************************************************************
+
+int  nift_menu()
+{         clrscr();
+int q5;
+cout<<"\n^^^^^^^^^^^^^^^Menu 10^^^^^^^^^^^^^^^^";
+cout<<"\n-----------------------------------";
+cout<<"\n	1. Centres of NIFT";
+cout<<"\n	2. Head Office of NIFT";
+cout<<"\n	3. Programmes NIFT offers";
+cout<<"\n	4. About age limit";
+cout<<"\n	5. Seats for admission at nift";
+cout<<"\n------------------------------------";
+cout<<"\n\nEnter your choice :: ";
+cin>>q5;
+
+return q5;
+
+}
+
+//****************************************************************************
+//                       FUNCTION TO KNOW ABOUT NIFT
+//****************************************************************************
+
+void nift::know()
+{clrscr();
+int q5,q6;
+do
+{
+q5=nift_menu();
+switch(q5)
+{
+case 1:cout<<"\n\nNIFT offers 13 CENTRES in India and one INTERNATIONAL CENTRE at Mauritius";
+cout<<"\n-----------------------------------------------------------------";
+cout<<"\n\n\nIn India these centres are located at:";
+cout<<"\nBengaluru"<<"\n"<<"Kolkata"<<"\n"<<"Bhopal"<<"\n"<<"Mumbai"<<"\n"<<"Chennai"<<"\n"<<"New Delhi"<<"\n";
+cout<<"Gandhinagar"<<"\n"<<"Patna"<<"\n"<<"Hyderabad"<<"\n"<<"Raebareli"<<"\n"<<"Kangra"<<"\n"<<"Shillong"<<"\n"<<"Kannur"<<"\n";
+cout<<"\n----------------------------------------------------------------";
+break;
+case 2:cout<<"\n-----------------------------------------------------";
+cout<<"\n\t HEAD OFICE";
+cout<<"\n Address:NIFT campus, \n Hauz Khas,\n Near Gulmohar Park,\n New Delhi-110 016 ";
+cout<<"\n--------------------------------------------------------------";
+ break;
+case 3:cout<<"\n\nNIFT offers following programmes:";
+       do
+       {
+       q6=prog_menu();
+       switch(q6)
+      {
+	 case 1:p1.d_prog();
+	break;
+	 case 2: p1.t_prog();
+	break;
+	 default:cout<<"\n\nSorry!! You entered a wrong choice";
+      }
+      cout<<"\n\nWanna go back to menu 11 :: ";
+      cin>>x1;
+      }while((x1=='y')||(x1=='Y'));
+      break;
+case 4:cout<<"\nThe upper age for applying in bachelor programme is restricted to 23 years";
+break;
+case 5:cout<<"\n\n	Total no. of seats at nift :: ";
+cout<<"\n	Total Seats at Bachelor Programme :: "<<100;
+cout<<"\n	Total Seats at Master Programme :: "<<100;
+cout<<"\n\n	Seats left at Bachelor Programme :: "<<100-s1;
+cout<<"\n	Seats left at Master Programme :: "<<100-s2;
+break;
+default:cout<<"\n\nSorry!! You entered a wrong choice";
+}
+cout<<"\n\nDo u wanna go back to menu 10 :: ";
+cin>>x2;
+}while((x2=='y')||(x2=='Y'));
+}
+
+//****************************************************************************
+//      THIS FUNCTION DISPLAYS PROFRAMMES NIFT OFFERS AT TECHNOLOGY LEVEL
+//****************************************************************************
+
+void programme::t_prog()
+{                            clrscr();
+cout<<"\n\n	At ungraduate level ::";
+cout<<"\n\n	B.F.Tech(Apparel Production)";
+cout<<"\n\n	At master level :: ";
+cout<<"\n\n	M.F.Tech";
+}
+
+//****************************************************************************
+//      THIS FUNCTION DISPLAYS PROFRAMMES NIFT OFFERS AT TECHNOLOGY LEVEL
+//****************************************************************************
+
+void programme::d_prog()
+{                         clrscr();
+cout<<"\n\n	At ungraduate level ::";
+cout<<"\n\n	Leather Design,Fashion Design,Textile Design,Leather Design";
+cout<<"\n\n	At master level  ::";
+cout<<"\n\n	Master Design";
+}
+
+//****************************************************************************
+//              FUNCTION TO DISPLAY GENERAL CALENDAR OF NIFT
+//****************************************************************************
+
+void nift::gen_cal()
+{         clrscr();
+cout<<"\n---------------------------------------------------------------";
+cout<<"\n\n  Application Form available "<<"                        "<<": 20th Nov,2010 to 5th Jan,2011";
+cout<<"\n\n  Last date od submission of application "<<"            "<<": 9th Jan,2011";
+cout<<"\n\n  Written Entrance Examination"<<"                       "<<": 21st Feb,2011";
+cout<<"\n\n  Declaration of Writen Examination Result"<<"           "<<": 1st Week of April,2011";
+cout<<"\n\n  Situtation Test / GD /Interviews"<<"                   "<<": April-May,2011";
+cout<<"\n\n  Declaration of Final Results\nBachelor Programmes"<<"                                  "<<": Mid of May,2011";
+cout<<"\n\n  Declaration of Final Results\nMasters Programmes "<<"                                  "<<": Mid of June,2011";
+cout<<"\n------------------------------------------------------------";
+}
+
+//****************************************************************************
+//            FUNCTION TO DISPLAY ADMISSION TEST PATTERN OF NIFT
+//****************************************************************************
+
+void nift::adm_test()
+{                           clrscr();
+cout<<"\n BACHELOR PROGRAMMES"<<setw(17)<<"TEST"<<setw(30)<<"WEIGHTAGE";
+cout<<"\n ---------------------------------------------------------------";
+cout<<"\n\n Design"<<setw(43)<<"GAT(General Ability Test)"<<setw(15)<<"40%";
+cout<<"\n\t\t\t CAT(Creative Ability Test)"<<setw(14)<<"40%";
+cout<<"\n\t\t\t Situtation Test"<<setw(25)<<"20%";
+cout<<"\n\n\n Apparel Production"<<setw(31)<<"GAT(General Ability Test)"<<setw(15)<<"60%";
+cout<<"\n\t\t\t MAT(Manegerial Ability Test)"<<setw(12)<<"40%";
+cout<<"\n-----------------------------------------------";
+cout<<"\n MASTERPROGRAMMES"<<setw(19)<<"TEST"<<setw(30)<<"WEIGHTAGE";
+cout<<"\n-------------------------------------------------------------------";
+cout<<"\n\n Design"<<setw(43)<<"GAT(General Ability Test)"<<setw(15)<<"40%";
+cout<<"\n\t\t\t CAT(Creative Ability Test)"<<setw(14)<<"40%";
+cout<<"\n\t\t\t GD(Group Discussion)"<<setw(20)<<"10%";
+cout<<"\n\t\t\t Interview"<<setw(31)<<"10%";
+cout<<"\n\n MANAGEMENT"<<setw(39)<<"GAT(General Ability Test)"<<setw(15)<<"40%";
+cout<<"\n\t\t\t MAT(Manegerial Ability Test)"<<setw(12)<<"40%";
+cout<<"\n\t\t\t GD(Group Discussion)"<<setw(20)<<"10%";
+cout<<"\n\t\t\t Interview"<<setw(31)<<"10%";
+cout<<"\n\n TECHNOLOGY"<<setw(39)<<"GAT(General Ability Test)"<<setw(15)<<"40%";
+cout<<"\n\t\t\t MAT(Manegerial Ability Test)"<<setw(12)<<"40%";
+cout<<"\n\t\t\t GD(Group Discussion)"<<setw(20)<<"10%";
+cout<<"\n\t\t\t Interview"<<setw(31)<<"10%";
+cout<<"\n ----------------------------------------------------------";
+}
+
+
+//****************************************************************************
+//                FUNCTION TO DISPLAY INTRODUCTION ABOUT NIFT
+//****************************************************************************
+
+void nift::intro()
+{                           clrscr();
+cout<<"\n\nNIFT";
+cout<<"\n National Institute of Fashion Technology was set up in 1986 under the ageis of ";
+cout<<" the Ministry of Textiles ,Government of India.It has emerged as the premier    Institute of Design ,Management ";
+cout<<" and Technology, developing professionals for  taking up leadership positions in fashion business in the emerging ";
+cout<<" global scenario. NIFT has been granted statuary status under the act of Parliament of India in 2006, empowering the Institute ";
+cout<<"to award degrees and other academic distinctions.\nThe Institute is a pioneer in envisioning and evolving fashionbusiness";
+cout<<" education in the country through a network of twelve professionally managed domestic    centres at New Delhi, Banglore, Chennai, Gandhinagar, Hyderabad, Kolkata, Mumbai, ";
+cout<<" Raebareli,Bhopal,Kannur,Patna,and Shillong.NIFT has further spread";
+cout<<" its wings globally with the opening of an International  centre at Mauritius.\n\n";
+cout<<" NIFT has academic standards and excellent in thought leadership by providing ";
+cout<<" a pool of creative genius and technically competent professionals.";
+cout<<" The Institute provides a common platform for fashion education, research and training.";
+}
+
+//****************************************************************************
+//                    THIS FUNCTION DISPLAYS MAIN MENU
+//****************************************************************************
+
+int admission::main_menu()
+{
+clrscr();
+int m1;
+cout<<"\n^^^^^^^^^^^^^^^^MAIN MENU^^^^^^^^^^^^^^^^^^";
+cout<<"\n---------------------------------------";
+cout<<"\n  1.Take admission at Nift"<<endl<<endl;
+cout<<"\n  2.Display Records of students at Nift"<<endl<<endl;
+cout<<"\n  3.Modify students records"<<endl<<endl;
+cout<<"\n  4.Delete students records"<<endl<<endl;
+cout<<"\n  5.Insert a new student in your section"<<endl<<endl;
+cout<<"\n  6.Search students record "<<endl<<endl;
+cout<<"\n  7.Subsidy Nift Offers"<<endl<<endl;
+cout<<"\n  8.General Calender"<<endl<<endl;
+cout<<"\n  9.Admission Test Pattern "<<endl<<endl;
+cout<<"\n 10.Wanna know about Nift "<<endl<<endl;
+cout<<"\n 11.Introduction about Nift"<<endl<<endl;
+cout<<"\n 12.exit"<<endl<<endl;
+cout<<"\n --------------------------------------";
+cout<<"\n\n  Enter your choice :: ";
+cin>>m1;
+return m1;
+}
+
+//****************************************************************************
+//  THIS FUNCTION FINDS ELIGIBILITY OF A STUDENT TO TAKE ADMISSION AT NIFT
+//****************************************************************************
+
+void verify::eligible()
+{         clrscr();
+cout<<"\n Give an eligibility check ::"<<endl<<endl;
+cout<<"\n\n	   Wanna apply for :: "<<endl<<endl;
+cout<<"\n		 1.Bachelor programme"<<endl<<endl;
+cout<<"\n		 2.Master programme"<<endl<<endl;
+cout<<"\n\nEnter choice :: ";
+cin>>m2;
+switch(m2)
+{
+case 1:if(s1<100)
+	    bac_prog();
+	  else
+	    cout<<"\nSorry!! Seats are full";
+break;
+case 2:if(s2<100)
+	    mas_prog();
+	  else
+	    cout<<"\nSorry!! Seats are full";
+break;
+default:cout<<"\n\nSorry!! You entered a wrong choice";
+}
+}
+
+//****************************************************************************
+//        THIS FUNCTION VERIFIES A STUDENT FOR ADMISSION AT MASTER LEVEL
+//****************************************************************************
+
+void verify::bac_prog()
+{                           clrscr();
+cout<<"\nEnter your age :: ";
+cin>>age1;
+if((age1<22)&&(age1>=18))
+{
+cout<<"\n\n	 In which department :: "<<endl<<endl;
+cout<<"\n		1.Design"<<endl<<endl;
+cout<<"\n		2.Technology"<<endl<<endl;
+cout<<"\n\nEnter choice :: ";
+cin>>m3;
+switch(m3)
+{
+case 1:k1=b_design();
+      if(k1==1)
+      {
+	cout<<"\nU can take admission at nift.";
+	adm();
+	++s1;
+	cout<<"\n\nCongrats!!! U got admission at nift";
+      }
+      else if(k1==0)
+	cout<<"\nU cannot take admission at nift.";
+break;
+case 2:k2=b_tech();
+       if(k2==1)
+       {
+	 cout<<"\nU can take admission at nift.";
+	 adm();
+	 ++s1;
+	 cout<<"\n\nCongrats!!! You got admission at nift";
+       }
+       else if(k2==0)
+	 cout<<"\nSorry!! You cannot take admission at nift.";
+break;
+default:cout<<"\n\nSorry!! You entered a wrong choice";
+}
+}
+else
+cout<<"\nSorry!! You cannot take admission at nift";
+}
+
+
+//****************************************************************************
+//        THIS FUNCTION VERIFIES A STUDENT FOR ADMISSION AT MASTER LEVEL
+//****************************************************************************
+
+void verify::mas_prog()
+{                  clrscr();
+cout<<"\nEnter your age :: ";
+cin>>age2;
+if((age2<=24)&&(age2>=20))
+{
+cout<<"\n\n     In which department :: "<<endl<<endl;
+cout<<"\n		1.Design"<<endl<<endl;
+cout<<"\n	        2.Management"<<endl<<endl;
+cout<<"\n		3.Technology"<<endl<<endl;
+cout<<"\n\nEnter choice :: ";
+cin>>m4;
+switch(m4)
+{
+case 1:k3=m_design();
+       if(k3==1)
+       {
+	 cout<<"\nYou can take admission at nift";
+	 adm();
+	 ++s2;
+	 cout<<"\n\nCongrats!!! You got admission at nift";
+       }
+       else if(k3==0)
+	 cout<<"\nSorry!! You cannot take admission at nift";
+break;
+case 2:k4=m_man();
+       if(k4==1)
+       {
+	 cout<<"\nYou can take admission at nift";
+	 adm();
+	 ++s2;
+	 cout<<"\n\nCongrats!!! You got admission at nift" ;
+       }
+       else if(k4==0)
+	 cout<<"\nYou cannot take admission at nift";
+break;
+case 3:k5=m_tech();
+       if(k5==1)
+       {
+	 cout<<"\nYou can take admission at nift";
+	 adm();
+	 ++s2;
+	 cout<<"\n\nCongrats!!! U got admission at nift" ;
+       }
+       else if(k5==0)
+	 cout<<"\nSorry!! You cannot take admission at nift";
+break;
+default:cout<<"\n\nSorry!! You entered a wrong choice";
+}
+}
+else
+cout<<"\nSorry!! You cannot take admission";
+}
+
+
+//*******************************************************************************************************************
+//THIS STUDENT TAKES ELIGIBILTY TEST OF A STUDENT FOR ADMISSION IN DESIGN DEPARTMENT AT BACHELOR LEVEL
+//*******************************************************************************************************************
+
+int verify::b_design()
+{             clrscr();
+char p1,p2,p3;
+ cout<<"\n\n Do u have a passing grade in 10+2 exam of CBSE ? ";
+cin>>p1;
+cout<<"\n Do u have a 3 or 4 years diploma recognised by AICTE or SBTE ? ";
+cin>>p2;
+cout<<"\n Do u have a passing grade in SSSE conducted by National Open School ? ";
+cin>>p3;
+if(((p1=='y')||(p1=='Y'))||((p2=='y')||(p2=='Y'))||((p3=='y')||(p3=='Y')))
+ return 1;
+else
+ return 0;
+
+}
+
+
+//*******************************************************************************************************************
+// THIS STUDENT TAKES ELIGIBILTY TEST OF A STUDENT FOR ADMISSION IN TECHNOLOGY DEPARTMENT AT BACHELOR LEVEL
+//*******************************************************************************************************************
+
+int verify::b_tech()
+{ clrscr();
+char b1,b2,b3;
+cout<<"\n\n Do you have a passing grade in 10+2 examnation of CBSE ? ";
+cin>>b1;
+cout<<"\n Do you have a passing grade in GCE Examination with PCM ? ";
+cin>>b2;
+cout<<"\nDo you have a 3 or 4 years diploma recognised by SBTE or AICTE ? ";
+cin>>b3;
+if(((b1=='y')||(b1=='Y'))||((b2=='y')||(b2=='Y'))||((b3=='y')||(b3=='Y')))
+ return 1;
+else
+ return 0;
+
+}
+
+//*******************************************************************************************************************
+// THIS STUDENT TAKES ELIGIBILTY TEST OF A STUDENT FOR ADMISSION IN DESIGN DEPARTMENT AT MASTER LEVEL
+//*******************************************************************************************************************
+
+int verify::m_design()
+{clrscr();
+char c1,c2,c3;
+cout<<"\n\nHave you done BSc(Textile & Clothing) ? ";
+cin>>c1;
+cout<<"\n Are you a bachelor in Applied Arts(Fashion design,Interior design,Product design) ? ";
+cin>>c2;
+cout<<"\n Have you a design diploma from NIFT/NID ? ";
+cin>>c3;
+if(((c1=='y')||(c1=='Y'))||((c2=='y')||(c2=='Y'))||((c3=='y')||(c3=='Y')))
+ return 1;
+else
+ return 0;
+
+}
+
+
+//*******************************************************************************************************************
+//THIS FUNCTION  TAKES ELIGIBILTY TEST OF A STUDENT FOR ADMISSION IN MANAGEMENT DEPARTMENT AT MASTER LEVEL
+//*******************************************************************************************************************
+
+int verify::m_man()
+{clrscr();
+char d1,d2;
+cout<<"\n\nHave you a 3 years Bachelor design recognised by AIU ? ";
+cin>>d1;
+cout<<"\nHave you any diploma in fashion design ? ";
+cin>>d2;
+if(((d1=='y')||(d1=='Y'))||((d2=='y')||(d2=='Y')))
+ return 1;
+else
+ return 0;
+
+}
+
+//****************************************************************************************************************
+// THIS FUNCTION TAKES ELIGIBILITY TEST OF A STUDENT FOR ADMISSION IN TECHNOLOGY DEPARTMENT AT MASTER LEVEL
+//****************************************************************************************************************
+
+int verify::m_tech()
+{
+char e1;
+cout<<"\n\nHave you done BE/B Tech(Textile/Mechanical/I.T.) ? ";
+cin>>e1;
+if((e1=='y')||(e1=='Y'))
+ return 1;
+else
+ return 0;
+ }
+
+//*******************************************************************
+//             THIS FUNCTION RANDOMLY DRAWS ADMISSION NOS.
+//*******************************************************************
+
+int admission::draw_nos()
+{
+start:
+randomize();
+z=random(10)+1;
+b[i]=z;
+for(k=i-1;k>=0;k--)
+{
+if(z==b[k])
+goto start;
+}
+++i;
+return z;
+}
+
+
+//****************************************************************************
+//      THIS IS MAIN FUNCTION CALLING ELIGIBILITY AND MAIN MENU FUNCTIONS
+//****************************************************************************
+void main()
+{
+int m1;
+char choice,choice1;
+s1=s2=0;
+do
+{
+clrscr();
+m1=a1.main_menu();
+switch(m1)
+{
+case 1:  do
+	 {
+	 v1.eligible();
+	 cout<<"\n\nDo some more students wanna take admission ? ";
+	 cin>>choice1;
+	 }while((choice1=='y')||(choice1=='Y'));
+
+break;
+case 2:
+       cout<<"\nThe information of students at NIFT :: ";
+       as.display();
+break;
+case 3:
+       as.mod();
+break;
+case 4:
+as.del();
+break;
+case 5:
+as.insert();
+break;
+case 6:
+as.search();
+break;
+case 7:
+n1.subsidy();
+break;
+case 8:
+n1.gen_cal();
+break;
+case 9:
+n1.adm_test();
+break;
+case 10:
+n1.know();
+break;
+case 11:
+n1.intro();
+break;
+case 12:
+cout<<"\n!!!!!!!!EXITING!!!!!!!!!";
+exit(0);
+break;
+default:cout<<"\n\nSorry!! U entered a wrong choice ";
+}
+cout<<"\n\nWanna go back to main menu :: ";
+cin>>choice;
+}while((choice=='y')||(choice=='Y'));
+getch();
+}
