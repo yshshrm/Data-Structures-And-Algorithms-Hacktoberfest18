@@ -23,7 +23,7 @@ void move_to_front(char alpha)
 {
 	struct node *temp=(struct node *)malloc(sizeof(struct node));		//creating a temporary node
 	//storing alpha in temporary node
-	temp->d=alpha;	
+	temp->d=alpha;	                                                  //Stores alpha into the data of temp
 	temp->next=NULL;
 
 
