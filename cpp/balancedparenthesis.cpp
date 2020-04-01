@@ -59,9 +59,52 @@ void balancedparenthesis(Stack &a,char exp[])
     else
         cout<<"Incomplete";
 }
+
+void checkBalan(string s)
+{
+    
+    stack<char>s1;
+    for(int i=0;i<s.length();i++)
+    {
+        if(s[i]=='{')
+        {
+            s1.push(s[i]);
+        }
+        else if(s[i]=='[')
+            s1.push(s[i]);
+        else if(s[i]=='(')
+            s1.push(s[i]);
+        else if(s[i]=='}')
+        {
+            if(s1.empty()||s1.top()!='{')
+                return f;
+            s1.pop();
+        }
+        else if(s[i]==']')
+        {
+            if(s1.empty()||s1.top()!='[')
+                return f;
+            s1.pop();
+        }
+        else if(s[i]==')')
+        {
+            if(s1.empty()||s1.top()!='(')
+                return f;
+            s1.pop();
+        }
+    }
+    
+    if(!s1.empty())
+    cout<<"not balanced\n";
+    else
+        cout<<"balanced\n";
+    
+    
+}
 int main()
 {
     char exp[]="([)]";
     Stack a;
     balancedparenthesis(a,exp);
 }
+
