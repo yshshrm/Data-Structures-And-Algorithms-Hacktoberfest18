@@ -1,94 +1,75 @@
-/ C Program for Floyd Warshall Algorithm 
-#include<stdio.h> 
-  
-// Number of vertices in the graph 
-#define V 4 
-  
-/* Define Infinite as a large enough value. This value will be used 
-  for vertices not connected to each other */
-#define INF 99999 
-  
-// A function to print the solution matrix 
-void printSolution(int dist[][V]); 
-  
-// Solves the all-pairs shortest path problem using Floyd Warshall algorithm 
-void floydWarshall (int graph[][V]) 
-{ 
-    /* dist[][] will be the output matrix that will finally have the shortest  
-      distances between every pair of vertices */
-    int dist[V][V], i, j, k; 
-  
-    /* Initialize the solution matrix same as input graph matrix. Or  
-       we can say the initial values of shortest distances are based 
-       on shortest paths considering no intermediate vertex. */
-    for (i = 0; i < V; i++) 
-        for (j = 0; j < V; j++) 
-            dist[i][j] = graph[i][j]; 
-  
-    /* Add all vertices one by one to the set of intermediate vertices. 
-      ---> Before start of an iteration, we have shortest distances between all 
-      pairs of vertices such that the shortest distances consider only the 
-      vertices in set {0, 1, 2, .. k-1} as intermediate vertices. 
-      ----> After the end of an iteration, vertex no. k is added to the set of 
-      intermediate vertices and the set becomes {0, 1, 2, .. k} */
-    for (k = 0; k < V; k++) 
-    { 
-        // Pick all vertices as source one by one 
-        for (i = 0; i < V; i++) 
-        { 
-            // Pick all vertices as destination for the 
-            // above picked source 
-            for (j = 0; j < V; j++) 
-            { 
-                // If vertex k is on the shortest path from 
-                // i to j, then update the value of dist[i][j] 
-                if (dist[i][k] + dist[k][j] < dist[i][j]) 
-                    dist[i][j] = dist[i][k] + dist[k][j]; 
-            } 
-        } 
-    } 
-  
-    // Print the shortest distance matrix 
-    printSolution(dist); 
-} 
-  
-/* A utility function to print solution */
-void printSolution(int dist[][V]) 
-{ 
-    printf ("The following matrix shows the shortest distances"
-            " between every pair of vertices \n"); 
-    for (int i = 0; i < V; i++) 
-    { 
-        for (int j = 0; j < V; j++) 
-        { 
-            if (dist[i][j] == INF) 
-                printf("%7s", "INF"); 
+// Floyd-Warshall Algorithm in C++
+
+#include <bits/stdc++.h>
+
+//INFNUM says that between graph[x][y], there is no path
+#define INFNUM 10000000
+
+using namespace std;
+
+int main(){
+
+    //Inputs
+    //Take the graph as an array V*V
+    //The graph is says whether there is a path between x and y, according to the graph[x][y] value
+    //If graph[x][y] value is INFNUM, then there is no path
+    int V;
+    
+    //Take vertex
+    cin >> V;
+
+    //Initialize the graph
+    int graph[V][V];
+
+    //Fill the graph
+    for(int i=0;i<V;i++){
+        //Take the input like
+        //0 1 1
+        //1 0 0
+        //1 3 0
+        for(int j=0;j<V;j++){
+            cin >> graph[i][j];
+        }
+    }
+
+
+    //Algorithm is here
+    //Floyd-Warshall algorithm is a n^3 algorithm as seen there is 3 inside loops
+    //The algorithm controls if between i,j there is a closer path with crossing k
+    //If there is, it decreases the path as [i][j]=[i][k]+[i][j]
+    //To be clear, it does i -> k -> j. If this path is closer than the path for now, algorithm changes to i->k->j
+    //To work algorithm correctly, we have to use this loop,first k,then i,then j or first k,then j,then i
+    //It is important that k is first, because while we are doing changes to the graph, we can miss some changes if we don't use first k
+    for(int k=0;k<V;k++){
+
+        for(int i=0;i<V;i++){
+
+            for(int j=0;j<V;j++){
+
+                graph[i][j]=min(graph[i][j],graph[i][k] + graph[k][j]);
+
+            }
+
+        }
+
+    }
+
+
+
+
+    //Just print
+    for(int i=0;i<V;i++){
+        for(int j=0;j<V;j++){
+            if(graph[i][j]==INFNUM)
+                cout << "INF ";
             else
-                printf ("%7d", dist[i][j]); 
-        } 
-        printf("\n"); 
-    } 
-} 
-  
-// driver program to test above function 
-int main() 
-{ 
-    /* Let us create the following weighted graph 
-            10 
-       (0)------->(3) 
-        |         /|\ 
-      5 |          | 
-        |          | 1 
-       \|/         | 
-       (1)------->(2) 
-            3           */
-    int graph[V][V] = { {0,   5,  INF, 10}, 
-                        {INF, 0,   3, INF}, 
-                        {INF, INF, 0,   1}, 
-                        {INF, INF, INF, 0} 
-                      }; 
-  
-    // Print the solution 
-    floydWarshall(graph); 
-    return 0; 
-} 
+                cout << graph[i][j] << " ";
+        }
+        cout << endl;
+        //print the graph path values line by line
+    }
+    
+
+
+    return 0;
+}
