@@ -18,6 +18,7 @@ This repository consists of data-structures and algorithms sorted by programming
 1. Fork repository onto your own account.
 2. Make your changes on your forked repository.
 3. Make Pull Request to master and enjoy.
+reffer this: https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github
 
 Hack on!
 God Speed
