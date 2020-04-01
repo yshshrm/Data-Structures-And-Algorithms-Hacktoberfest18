@@ -1,4 +1,4 @@
-###### Pre-requisites:
+ ###### Pre-requisites:
 Install Git: 
 *Are you a first time user and just beginning with Open-Source projects? No problem! Here's [how you can install Git on your computer](https://www.digitalocean.com/community/tutorials/how-to-contribute-to-open-source-getting-started-with-git)*
 
