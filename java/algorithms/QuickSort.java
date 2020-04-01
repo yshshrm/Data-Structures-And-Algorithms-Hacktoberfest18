@@ -6,7 +6,7 @@ class QuickSort {
 	 * to left of pivot and all greater elements to right of pivot
 	 */
 	int partition(int arr[], int si, int ei) {
-		int pivot = arr[si];
+		int pivot = arr[ei];
 		int i = (si - 1); // index of smaller element
 		for (int j = si; j < ei; j++) {
 			
