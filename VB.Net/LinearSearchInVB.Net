@@ -1,0 +1,18 @@
+''Linear Search
+
+Public Shared Function Search(list As Integer(), data As Integer) As Integer
+	For i As Integer = 0 To list.Length - 1
+		If data = list(i) Then
+			Return i
+		End If
+	Next
+
+	Return -1
+End Function
+
+'Example
+Dim list As Integer() = {153, 26, 364, 72, 321}
+Dim index As Integer = Search(list, 364)
+
+'Output
+index: 2

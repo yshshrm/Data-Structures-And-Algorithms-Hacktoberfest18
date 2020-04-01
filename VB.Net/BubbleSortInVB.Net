@@ -1,0 +1,24 @@
+Public Shared Sub BubbleSort(ByRef data As Integer())
+	For i = 1 To (data.Length - 1)
+		For j = 0 To ((data.Length - 1) - i)
+			If data(j) > data(j + 1) Then
+				data(j) = data(j) Xor data(j + 1)
+				data(j + 1) = data(j + 1) Xor data(j)
+				data(j) = data(j) Xor data(j + 1)
+			End If
+		Next
+	Next
+End Sub
+
+'Example
+Dim data() As Integer = { -1, 25, -58964, 8547, -119, 0, 78596 }
+BubbleSort(data)
+
+'Output
+-58964
+-119
+-1
+0
+25
+8547
+78596
