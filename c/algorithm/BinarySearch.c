@@ -12,7 +12,7 @@ void main()
 		large=mid-1;
 		else
 		small=mid+1;
-		mid=(large+small)/2;
+		mid=small+(large-small)/2;
 		if(ch==mid)
 		{
 			f=1;

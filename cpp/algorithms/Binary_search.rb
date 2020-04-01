@@ -8,12 +8,12 @@ def binary_search(n, arr)
       return true
     elsif middle < n
       i = middle
-      middle = i + j / 2
+      middle = i + (j - i) / 2
     else
       p "Middle is greater than n"
       j = middle
       p "j: #{j}"
-      middle = i + j / 2
+      middle = i + (j - i) / 2
       p "middle: #{middle}"
     end
   end

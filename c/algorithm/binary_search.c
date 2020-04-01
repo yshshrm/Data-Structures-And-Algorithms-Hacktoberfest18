@@ -17,7 +17,7 @@ int main()
  
    first = 0;
    last = n - 1;
-   middle = (first+last)/2;
+   middle = first+(first-last)/2;
  
    while (first <= last) {
       if (array[middle] < search)
@@ -29,7 +29,7 @@ int main()
       else
          last = middle - 1;
  
-      middle = (first + last)/2;
+      middle = first + (last - first)/2;
    }
    if (first > last)
       printf("Not found! %d isn't present in the list.\n", search);
