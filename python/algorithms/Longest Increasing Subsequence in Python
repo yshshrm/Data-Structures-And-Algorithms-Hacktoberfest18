@@ -1,0 +1,23 @@
+def seq(arr): 
+	n = len(arr)
+
+  lis = [1]*n 
+
+	for i in range (1 , n): 
+		for j in range(0 , i): 
+			if arr[i] > arr[j] and lis[i]< lis[j] + 1 : 
+				lis[i] = lis[j]+1
+
+	maximum = 0
+
+	for i in range(n): 
+		maximum = max(maximum , lis[i]) 
+
+	return maximum 
+
+def main():
+  arr = [10, 19, 9, 24, 4, 5, 34, 60] 
+  print("Length of longest subsequence is: ", seq(arr))
+  
+if __name__ == '__main__':
+    main()
