@@ -138,15 +138,34 @@ int height(struct node* curr)
 }
 
 //finding inorder succesor of child node
-/*struct node* inordersucc(struct node *child)
+struct node* inordersucc(struct node *child)
 {
+  if( child->right != NULL ) 
+       return minValue(child->right); 
 
-}*/
+  
+
+  // step 2 of the above algorithm 
+
+  struct node *p = child->parent; 
+
+  while(p != NULL && child == p->right) 
+
+  { 
+
+     child = p; 
+
+     p = p->parent; 
+
+  } 
+
+  return p; 
+}
 
 //creating threads to binary tree created
 void createThread(struct node *curr)
 {
-	/*//if right child is null and left is not
+	//if right child is null and left is not
 	if(curr->right==NULL&&curr->left!=NULL)
 	{
 		curr->right=inordersucc(curr);		//connect right pointer to inorder succesor
@@ -167,7 +186,7 @@ void createThread(struct node *curr)
 	{
 		curr->right=inordersucc(curr);		//connect right pointer to inorder succesor
 		curr->Rthread=TRUE;					//making its thread TRUE
-	}*/
+	}
 
 }
 
