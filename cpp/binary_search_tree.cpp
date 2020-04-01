@@ -1,125 +1,42 @@
-#include<iostream>
-#include<string>
+#include <iostream>
 using namespace std;
-template <class t>
-struct node
-{
-    t val;
-    node<t>* l;
-    node<t>* r;
 
-};
-template<class t>
-class bst
-{
-private:
-     void search_pos(node<t>* temp,node<t>* root)
-    {
-        if ((temp->val > root->val) && (root->r != NULL))
-            search_pos(temp,root->r);
-        if ((temp->val > root->val) && (root->r == NULL))
-            root->r = temp;
-        if ((temp->val < root->val) && (root->l != NULL))
-            search_pos(temp,root->l);
-        if ((temp->val < root->val) && (root->l == NULL))
-            root->l = temp;
-    }
-public:
-   node<t>* root=NULL;
-    void insertnode()
-    {
-        node<t>* temp =new node<t>;
-        t n;
-        cin>>n;
-        temp->val= n;
-        temp->l = temp->r = NULL;
-        if (root == NULL)
-            root = temp;
-        else
-            search_pos(temp , root);
-    }
-
-    void inorder(node<t>*root)
-    {
-        if(root!=NULL)
-        {
-
-            inorder(root->l);
-            t n = root->val;
-            cout<<"\t"<<n;
-            inorder(root->r);
-        }
-    }
-
-};
 int main()
 {
+	int count, i, arr[30], num, first, last, middle;
+	cout<<"how many elements would you like to enter?:"; 
+        cin>>count;
 
-    int n;
-    cout<<"\n 1...Integer\n 2... Character\n 3...Double\n 4... String";
-    cout<<"\nEnter your choice:- ";
-    cin>>n;
-    switch(n)
-    {
-    case 1:
-       {
-            bst<int>obj;
-            do
-            {
-                cout<<"Enter value to be inserted:- ";
-                obj.insertnode();
-                cout<<"\nDo u want to insert more ?? if yes enter 1 else 0:- ";
-                cin >> n;
-            }while(n!=0);
-            obj.inorder(obj.root);
-            break;
-        }
+	for (i=0; i<count; i++)
+	{
+		cout<<"Enter number "<<(i+1)<<": "; 
+                cin>>arr[i];
+	}
+	cout<<"Enter the number that you want to search:"; 
+        cin>>num;
+	first = 0;
+	last = count-1;
+	middle = (first+last)/2;
+	while (first <= last)
+	{
+	   if(arr[middle] < num)
+	   {
+		first = middle + 1;
 
-    case 2:
-        {
-
-            bst<char>obj;
-            do
-            {
-                cout<<"Enter value to be inserted:- ";
-                obj.insertnode();
-                cout<<"\nDo u want to insert more ?? if yes enter 1 else 0:- ";
-                cin >> n;
-            }while(n!=0);
-            obj.inorder(obj.root);
-            break;
-        }
-
-    case 3:
-        {
-            bst<float>obj;
-            do
-            {
-                cout<<"Enter value to be inserted:- ";
-                obj.insertnode();
-                cout<<"\nDo u want to insert more ?? if yes enter 1 else 0:- ";
-                cin >> n;
-            }while(n!=0);
-            obj.inorder(obj.root);
-            break;
-        }
-
-    case 4:
-        {
-            bst<string>obj;
-            do
-            {
-                cout<<"Enter value to be inserted:- ";
-                obj.insertnode();
-                cout<<"\nDo u want to insert more ?? if yes enter 1 else 0:- ";
-                cin >> n;
-            }while(n!=0);
-            obj.inorder(obj.root);
-            break;
-        }
-    default:
-        cout<<"\nWrong choice";
-        break;
-    }
-    return 0;
+	   }
+	   else if(arr[middle] == num)
+	   {
+		cout<<num<<" found in the array at the location "<<middle+1<<"\n"; 
+                break; 
+           } 
+           else { 
+                last = middle - 1; 
+           } 
+           middle = (first + last)/2; 
+        } 
+        if(first > last)
+	{
+	   cout<<num<<" not found in the array";
+	}
+	return 0;
 }
