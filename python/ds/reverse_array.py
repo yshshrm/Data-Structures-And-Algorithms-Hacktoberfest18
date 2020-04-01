@@ -8,4 +8,4 @@ import sys
 
 # Complete the reverseArray function below.
 def reverseArray(a):
-    return a[len(a)::-1]    
+    return a[::-1]    
