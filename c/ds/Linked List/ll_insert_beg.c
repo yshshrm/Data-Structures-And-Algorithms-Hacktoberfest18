@@ -22,6 +22,11 @@ void insert(int x)
 void print()
 {
 	struct node* temp=head;
+	if(head == NULL)
+	{	
+	printf("List is Empty!\n");
+	return;
+	}
 	printf("List is: ");
 	 while(temp!=NULL)
 	  {
