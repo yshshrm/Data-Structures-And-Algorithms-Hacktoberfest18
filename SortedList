@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#define LIMPA_TELA system ("cls || clear")
+#define MAX 5
+
+char menu ();
+void mostrarVetor (int vet[], int f);
+void inserirOrdenado (int vet[], int *f, int v);
+void remover (int vet[], int *f, int pos);
+void esvaziar (int *f);
+
+int main () {
+	LIMPA_TELA;
+	setlocale (LC_ALL, "portuguese");
+
+	int listOrd[MAX], fim = -1, valor, posicao;
+	char opcao;
+
+	do {
+		opcao = menu ();
+		LIMPA_TELA;
+
+		switch (opcao) {
+			case '1': //mostrar
+				if (fim != -1)
+					mostrarVetor(listOrd, fim);
+				else
+					printf ("LISTA ORDENADA VAZIA\n\n");
+				break;
+
+			case '2': //inserir
+				if (fim != MAX - 1) {
+					printf ("Digite o valor: ");
+					scanf ("%d", &valor);				
+					inserirOrdenado (listOrd, &fim, valor);
+					printf("ELEMENTO INSERIDO\n\n");
+				}
+				else	
+					printf ("LISTA ORDENADA CHEIA\n\n");
+				break;
+
+			case '3': //remover
+				if (fim != -1){
+					printf ("Digite a posição para remover: ");
+					scanf ("%d", &posicao);
+					if (posicao >= 0 && posicao <= fim) {
+						remover (listOrd, &fim, posicao);
+						printf ("ELEMENTO REMOVIDO\n\n");
+					}
+					else
+						printf ("POSIÇÃO INVÁLIDA\n\n");
+				}
+				else
+					printf ("LISTA ORDENADA VAZIA\n\n");
+				break;
+
+			case '4': //esvaziar
+				esvaziar(&fim);
+				printf("LISTA ORDENADA VAZIA\n\n");
+				break;
+
+			case 's':
+			case 'S':
+				break;
+
+			default:
+				printf ("OPÇÃO INVÁLIDA!\n\n");
+		}
+	} while ((opcao != 'S') && (opcao != 's'));
+
+
+	return 0;
+}
+
+
+char menu () {
+	char op;
+
+	printf ("\n***** LISTA ORDENADA *****\n\n");
+	printf ("Opções\n");
+	printf ("---------------------\n");
+	printf ("1 - MOSTRAR LISTA\n");
+	printf ("2 - INSERIR ORDENADO\n");
+	printf ("3 - REMOVER\n");
+	printf ("4 - ESVAZIAR\n");
+	printf ("\nS/s - SAIR\n");
+	printf ("---------------------\n");
+	printf ("Digite a opção: ");
+	scanf (" %c", &op);
+
+	return op;
+}
+
+void mostrarVetor (int vet[], int f) {
+	int i;
+	printf ("POSIÇÃO\tVALOR\n");
+	for (i = 0; i <= f; i++)
+		printf ("%d\t%d\n", i, vet[i]);
+}
+
+void inserirOrdenado (int vet[], int *f, int v) {
+	int i;
+	(*f) ++;
+	for (i = *f; (i != 0) && (vet[i-1] > v); i --)
+		vet[i] = vet[i - 1];
+
+	vet[i] = v;
+}
+
+void remover (int vet[], int *f, int pos) {
+	int i;
+
+	(*f) --;
+	for (i = pos; i <= *f; i ++)
+		vet[i] = vet[i + 1];
+}
+
+void esvaziar (int *f) {
+	*f = -1;
+}
