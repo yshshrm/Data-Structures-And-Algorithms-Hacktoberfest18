@@ -2,6 +2,7 @@
 For Hacktoberfest 2018! <br/>
 
 Check your own profile stats after registering here: https://hacktoberfest.digitalocean.com/stats/<username>
+For Basic Git Command : https://jervis446.github.io/git-guide/ 
 
 ### About
 This repository consists of data-structures and algorithms sorted by programming language.
@@ -18,6 +19,7 @@ This repository consists of data-structures and algorithms sorted by programming
 1. Fork repository onto your own account.
 2. Make your changes on your forked repository.
 3. Make Pull Request to master and enjoy.
+
 
 Hack on!
 God Speed
