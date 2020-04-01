@@ -1,20 +1,20 @@
 # python program to search for a number linearlly in a list
 
-def LinearSearch(l,val):
-    for i in range(len(l)):
-        if (l[i]==val):
+def linear_search(alist, key):
+    """Return index of key in alist. Return -1 if key not present."""
+    for i in range(len(alist)):
+        if alist[i] == key:
             return i
     return -1
-
-prompt = "enter a list of numbers seperated by spaces:"
-l=list(map(int, input(prompt).split()))
-
-val=int(input("enter the number to be searched:"))
-
-i= LinearSearch(l,val)
-if(i==-1):
-    print("%d not found"%val)
+ 
+ 
+alist = input('Enter the list of numbers: ')
+alist = alist.split()
+alist = [int(x) for x in alist]
+key = int(input('The number to search for: '))
+ 
+index = linear_search(alist, key)
+if index < 0:
+    print('{} was not found.'.format(key))
 else:
-    print("%d found at position %d"%(val,i))
-
-            
+    print('{} was found at index {}.'.format(key, index))
