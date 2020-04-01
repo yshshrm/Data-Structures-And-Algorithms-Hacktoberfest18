@@ -1,6 +1,8 @@
 #include<stdio.h>
+#include<conio.h>
 void main()
 {
+	clrscr();
 	int a[10],i,j,ch,large,f=0,small,mid;
 	for(i=0;i<10;i++)
 		scanf("%d",&a[i]);
@@ -23,4 +25,5 @@ void main()
 		printf("Choice Found");
 	else
 		printf("Choice not found");
+	getch();
 }
