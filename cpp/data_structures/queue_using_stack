@@ -1,0 +1,39 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main(){
+    // int stack1[5];
+    // int stack2[5];
+    stack<int> stack1; 
+    stack<int>stack2;
+    int a,n;
+    cout<<"enter value for n :";
+    cin>>n;
+    for(int i=0 ; i<n ; i++){
+        cout<<"enter a integer :";
+
+        cin>>a;
+        stack1.push(a);
+    }
+
+     cout<<"arrangement in stack:";
+
+   while(!stack1.empty()){
+       int b = stack1.top();
+       cout<<b<<" ";
+       stack1.pop();
+       stack2.push(b);
+    }
+
+    cout<<"\n";
+    cout<<"arrangement in queue:";
+    
+    while(!stack2.empty()){
+       
+        cout<<stack2.top()<<" ";
+        stack2.pop();
+    }
+
+    return 0;
+}
