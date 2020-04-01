@@ -1,4 +1,5 @@
 #include "stack.h"
+#include "stdio.h"
 
 stack_t *stack_create(void) {
     return (stack_t *)calloc(1, sizeof(stack_t));
@@ -49,4 +50,19 @@ void stack_destroy_with_elements(stack_t *stack) {
         current_frame = next;
     }
     free(stack);
+}
+void main()
+{
+    stack_t *s;
+s=stack_create();
+    
+    stack_push(s,(void*)5);
+    printf("pushed 5 to the stack\n");
+    stack_pop(s);
+  printf("poped 5 to the stack\n");
+    stack_push(s,(void*)4);
+    printf("pushed 4 to the stack\n");
+    stack_destroy(s);
+
+ printf("stack destroyed\n\n");
 }
