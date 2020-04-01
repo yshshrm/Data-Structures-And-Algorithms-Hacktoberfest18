@@ -52,14 +52,14 @@ public:
 	void bubbleSort(){
 		for (int i = 0; i < size; i++)
 		{
-			int t = 0;
+			
 			for (int j = 1; j < size - i; j++)
 			{
 				if (arr[j - 1]>arr[j])
 				{
-					t = arr[j - 1];
-					arr[j - 1] = arr[j];
-					arr[j] = t;
+					arr[j - 1]=arr[j - 1]+arr[j];
+					arr[j]=arr[j - 1]-arr[j];
+					arr[j - 1]=arr[j - 1]-a[j];
 				}
 			}
 		}
