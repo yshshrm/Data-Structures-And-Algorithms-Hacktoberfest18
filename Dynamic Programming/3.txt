@@ -1,0 +1,58 @@
+import java.util.Arrays;
+
+class Maximum
+{
+		public static int maxValue(int[] a)
+	{
+
+		int[] x=new int[a.length + 1];
+                  
+                  Arrays.fill(x,Integer.MIN_VALUE);
+
+		int[] y=new int[a.length];
+	               	
+	               	Arrays.fill(y,Integer.MIN_VALUE);
+
+		int[] z=new int[a.length - 1];
+	               	
+	               	Arrays.fill(z,Integer.MIN_VALUE);
+
+		int[] z2=new int[a.length - 2];
+                      
+                      Arrays.fill(z2,Integer.MIN_VALUE);
+  
+		for (int i = a.length - 1; i >= 0; i--) 
+		{
+			x[i] = Integer.max(x[i + 1],a[i]);
+		}
+
+		for (int i = a.length - 2; i >= 0; i--) 
+		{
+			y[i] = Integer.max(y[i + 1],x[i + 1] - a[i]);
+		}
+
+		for (int i = a.length - 3; i >= 0; i--)
+		{
+			z[i] =Integer.max(z[i + 1],y[i + 1] + a[i]);
+		}
+
+		for (int i = a.length - 4; i >= 0; i--) 
+		{
+			z2[i] = Integer.max(z2[i + 1],z[i + 1] - a[i]);
+		                        }
+
+		return z2[0];
+	}
+
+         	public static void main(String[] args)
+	{
+		int[] a = { 3, 9, 10, 1, 30, 40 };
+
+		         if (a.length >= 4) {
+		         	
+		         	System.out.println(maxValue(a));
+		                      
+		         	
+		         }
+	}
+}

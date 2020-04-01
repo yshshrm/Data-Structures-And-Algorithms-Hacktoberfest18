@@ -1,0 +1,38 @@
+#include<iostreme.h>
+using namespace std;
+int main()
+{
+    long int a , b , n , x ,  m=1000001;
+    vector<bool> prime(1000001,true);
+    set<long int> st;
+    prime[0] = prime[1]=false;
+    for(a=2;a*a<=m;a++)
+    {
+        if(prime[a])
+        {
+            for(b=a ; a*b<=m ; b++)
+            {
+                prime[a*b]=false;
+            }
+        }
+    }
+    for(a=2;a<=m;a++)
+    {
+        if(prime[a])
+            st.insert(a*a);
+    }
+    cout<<"Enter number"<<endl;
+    cin>>n;
+ while(n--)
+    {
+        cout<<endl<<"Enter numbers"<<endl;
+        cin>>x;
+ 
+        if(st.find(x)!=st.end())
+            cout<<x<<" is T-prime";
+        else
+            cout<<x<<" is NOT T-prime";
+        cout<<endl;
+    }
+    return 0;
+}
