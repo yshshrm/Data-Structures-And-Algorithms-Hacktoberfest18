@@ -53,17 +53,7 @@ class pilha{
             return val;
         }
 
-        int size(){
-            int cont = 0;
-            node* aux;
-            aux = head;
-            while(aux->prox !=nullptr){
-                cont++;
-                aux = aux->prox;
-            }
-            cont++;
-            return cont;
-        }
+        
 };
 
 int main(){
