@@ -78,7 +78,7 @@ int main(){
         if(val != stack_empty){
             cout << val << endl;
         }else{
-            cout << "stack is empty!" << endl;
+            cout << "Stack Underflow" << endl;
         }
     }
 
