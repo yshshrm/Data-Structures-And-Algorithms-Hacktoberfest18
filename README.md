@@ -4,7 +4,7 @@ For Hacktoberfest 2018! <br/>
 Check your own profile stats after registering here: https://hacktoberfest.digitalocean.com/stats/<username>
 
 ### About
-This repository consists of data-structures and algorithms sorted by programming language.
+This repository consists of data-structures and algorithms which are sorted by programming language.
 
 ### Contributing Guidelines
 - The repository is structured language-wise i.e. algorithms in a certain language go in a specific folder.
