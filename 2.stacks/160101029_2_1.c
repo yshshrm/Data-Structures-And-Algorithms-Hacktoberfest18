@@ -28,7 +28,7 @@ int main()
 	{
 		count=1;	//initialzing count
 
-		j=i-1;      //innitializing j
+		j=i-1;      //initializing j
 
 		//run loop till price greater then x[i] is found
 		while(x[j]<=x[i]&&j>=0)
