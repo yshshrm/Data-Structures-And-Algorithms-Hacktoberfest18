@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <bits/stdc++.h>
+
 
 //structure representing linked list
 struct node
