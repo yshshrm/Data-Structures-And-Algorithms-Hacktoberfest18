@@ -1,8 +1,10 @@
+import java.util.*;
 public class Prime
 {    
     public static void main(String args[])
-    {          
-        int value=3;//it is the number to be checked    
+    {         
+        Scanner sc=new Scanner(System.in);
+        int value=sc.nextInt();                                // the number to be checked    
        if((value > 2 && value % 2 == 0) || value == 1) {
            System.out.println("Not a Prime number");
                 return ;
