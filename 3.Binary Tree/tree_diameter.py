@@ -38,7 +38,7 @@ def diameter(root):
 
     # Get the diameter of left and irgh sub-trees 
     ldiameter = diameter(root.left) 
-    rdiameter = diameter(root.right) 
+    rdiameter = diameter( root.right) 
 
     # Return max of the following tree: 
     # 1) Diameter of left subtree 
