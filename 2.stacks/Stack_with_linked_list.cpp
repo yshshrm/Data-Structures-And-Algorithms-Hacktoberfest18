@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 #define stack_empty -1
+//              Class pilha             //
 class pilha{
     private:
         struct node{
@@ -66,6 +68,7 @@ class pilha{
         }
 };
 
+//              Main Function           //
 int main(){
     pilha st;
     int val;
@@ -90,3 +93,4 @@ int main(){
     cout << st.show_top() << " is top element of stack" << endl;
     return 0;
 }
+//                  PROGRAM Ends                //
