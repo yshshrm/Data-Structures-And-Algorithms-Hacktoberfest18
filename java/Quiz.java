@@ -26,6 +26,8 @@ Quizques q7= new Quizques("Dynamic binding uses which information for binding?\n
 Quizques q8= new Quizques("What invokes a thread's run() method?\nA - JVM invokes the thread's run() method when the thread is initially executed.\nB - Main application running the thread.\nC - start() method of the thread class.\nD - None of the above.","a");
 Quizques q9= new Quizques("Can constructor be inherited?\nA - True.\nB - False.","b");
 Quizques q10= new Quizques("which operator is considered to be with highest precedence?\nA - () , []\nB - =\nC - ?:\nD - %","a");
+Quizques q10= new Quizques("Which method is called when an object is destroyed by the Garbage collector?\nA - destruct(). \nB - finalize(). \nC - destroy(). \nD - None of the above.","b");
+
 List<Quizques> list = new ArrayList<Quizques>();
 Scanner scan=new Scanner(System.in);
 Random rand =new Random();
