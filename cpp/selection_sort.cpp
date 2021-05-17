@@ -19,7 +19,9 @@ void selectionSort(int arr[], int n)
 		}
 
 		// swap the minimum element in subarray[i..n-1] with arr[i]
-		swap(arr[min], arr[i]);
+		int temp = arr[i];  //let say arr[i] is 5 and arr[min]=4 so we will store 5 in temp then we will update arr[i] with 4 and then we will store that 5 in arr[min];
+		arr[i]=arr[min];//if we don't create temp then the arr[i] will get updated with 4 but tha value stored there i.e 5 will be gone so temp is for temporary holding the value to help in swapping
+		arr[min]=temp;  // you can also use swap(arr[min],arr[i]); 
 	}
 }
 
@@ -33,8 +35,12 @@ void printArray(int arr[], int n)
 // main function
 int main()
 {
-	int arr[] = { 3, 5, 8, 4, 1, 9, -2 };
-	int n = sizeof(arr) / sizeof(arr[0]);
+	int n;
+	cin>>n; // size of array 
+	int arr[n];
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
 
 	selectionSort(arr, n);
 	printArray(arr, n);
