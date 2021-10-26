@@ -7,11 +7,11 @@ def naive_search_while(string,sub):
     for i in range(str_len-sub_len +1):
         for j in range(sub_len):
             if string[i+j] == sub[j]:
-                if j == sub_len-1:
+                if j == sub_len--:
                     return i
             else:
                 break
-
+#naive approach reduces the time complexity
 
 def naive_search_for(string,sub):
     str_len = len(string)
@@ -20,9 +20,9 @@ def naive_search_for(string,sub):
 
     while i <= str_len-sub_len and j < sub_len:
         if string[i+j] == sub[j]:
-            j += 1
+            j++
         else:
-            i += 1
+            i++
             j = 0  
     return i if j == sub_len else None
 
