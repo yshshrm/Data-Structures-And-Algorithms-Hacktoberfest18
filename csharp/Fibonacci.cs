@@ -1,33 +1,38 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Fibonacci
+namespace FibonacciCSharp
 {
-    internal class Fibonacci
+    class Program
     {
-        private static long Fib(int fib)
+        static int fibonacci(int n)
         {
-            if (fib <= 2)
-                return 1;
-            long prev = 1, cur = 1;
-            for (var i = 2; i < fib; ++i)
+            int[] f = new int[n + 1];
+            int i;
+
+            f[0] = 0;
+            f[1] = 1;
+
+            for(i = 2; i <= n; i++)
             {
-                var tmp = cur;
-                cur += prev;
-                prev = tmp;
+                f[i] = f[i - 1] + f[i - 2];
             }
 
-            return cur;
+            return f[n];
         }
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Fibonacci: ");
-            var line = Console.ReadLine();
-            if (line != null)
-            {
-                var value = Fib(int.Parse(line));
-                Console.Out.WriteLine(value);
-            }
+            Console.WriteLine("Write the nth term for which you'd like to find the fibonacci number for: ");
+            int number = Convert.ToInt32(Console.ReadLine());
+
+            int sum = fibonacci(number);
+
+            Console.WriteLine(sum);
+            Console.ReadKey();
         }
     }
 }
