@@ -43,7 +43,7 @@ int main()
 		stack[i].span=findSpan(stack[i].price);
 		top=i;
 	}
-	printf("Day\tPrice\tSpan\n");
+	printf("Day\nPrice\nSpan\n");
 	while(top!=-1)
 	{
 		printf(" %d\t %d\t %d\n",stack[top].day,stack[top].price,stack[top].span);
